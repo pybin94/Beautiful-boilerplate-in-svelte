@@ -1,0 +1,38 @@
+.sidebar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: var(--card);
+    height: 100vh;
+    width: 230px;
+    padding: 15px;
+
+    &__header {
+        display: flex;
+        align-items: center;
+
+        &__brand{
+            display: flex;
+            align-items: center;
+            margin-top: 5px;
+            margin-right: auto;
+
+            &__logo {
+                width: 60px;
+            }
+
+            &__text {
+                color: var(--main-color);
+                font-size: 1.5rem;
+                padding-left: 0.5rem;
+            }
+        }
+
+        i {
+            color: var(--main-color);
+            font-size: 1.20rem;
+            cursor: pointer;
+            margin: 0 0.25rem;
+        }
+    }
+}

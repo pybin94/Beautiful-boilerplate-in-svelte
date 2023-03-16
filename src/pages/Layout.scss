@@ -1,0 +1,14 @@
+.container {
+    margin-left: 230px;
+
+    &.hide {
+        margin-left: 0;
+    }
+}
+.hide {
+    margin-left: 0;
+}
+.app-content {
+    padding: 7.75rem 2rem 0;
+    width: 100%;
+}
