@@ -6,6 +6,8 @@
   import Login from "pages/Login/Login.svelte";
   import Main from "pages/Main/Main.svelte";
 
+  document.title = process.env.SITENAME
+  
   let hasCookie:boolean;
   getCookie("auth") ? hasCookie = true : hasCookie = false;
 

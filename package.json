@@ -21,6 +21,7 @@
     "vite": "^4.0.0"
   },
   "dependencies": {
+    "dotenv": "^16.0.3",
     "svelte-routing": "^1.6.0"
   }
 }

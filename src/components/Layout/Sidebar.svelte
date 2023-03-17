@@ -12,7 +12,7 @@
     <div class="sidebar__header">
         <a href="/" class="sidebar__header__brand" use:link>
             <img class="sidebar__header__brand__logo" src="/src/assets/logo.png" alt="">
-            <p class="sidebar__header__brand__text">Monnlisa</p>
+            <p class="sidebar__header__brand__text">{process.env.SITENAME}</p>
         </a>
         <i 
             on:click={toggleSidebar} 

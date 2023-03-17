@@ -6,7 +6,7 @@
     let sidebarVisible: boolean = true;
     let container: HTMLDivElement;
 
-    const toggleSidebar = () => {    
+    const toggleSidebar = () => {
         sidebarVisible = !sidebarVisible;
         container.classList.toggle("hide")
         

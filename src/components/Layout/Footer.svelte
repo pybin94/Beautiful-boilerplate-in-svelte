@@ -1,4 +1,3 @@
-<hr class="hr"/>
 <footer class="footer">
     Copyright (c) UnderDog &amp; Unify, 2022
 </footer>

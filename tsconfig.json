@@ -17,11 +17,6 @@
     "isolatedModules": true,
     "declaration": true,
     "baseUrl": "src/", // TS import error 추가
-    
-    "esModuleInterop": true,
-    "importsNotUsedAsValues": "error",
-    "verbatimModuleSyntax": true,
-    "ignoreDeprecations": "5.0"
   },
   "include": ["src/**/*.d.ts", "src/**/*.ts", "src/**/*.js", "src/**/*.svelte"], // TS import error 추가
   "references": [{ "path": "./tsconfig.node.json" }],

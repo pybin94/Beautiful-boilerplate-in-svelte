@@ -54,6 +54,14 @@ export const getCookie = (cookieName: string): string => {
     }
 }
 
+export const setCookie = (cookieName: string, value: any, expires: number = 0): void => {
+    var date = new Date();
+    date.setTime(date.getTime() + expires*24*60*60*1000);
+    expires == 0
+    ? document.cookie = cookieName + '=' + value + ';path=/'
+    : document.cookie = cookieName + '=' + value + ';expires=' + date.toUTCString() + ';path=/';
+}
+
 export const deleteCookie = (cookieName: string): void => {
 	document.cookie = cookieName + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT; path=/';
 }
