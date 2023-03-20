@@ -1,5 +1,5 @@
 <footer class="footer">
-    Copyright (c) UnderDog &amp; Unify, 2022
+    Copyright (c) <span>{process.env.SITENAME}</span> &amp; Unify, 2022
 </footer>
 
 <style lang="scss">

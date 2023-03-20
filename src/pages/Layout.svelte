@@ -2,6 +2,7 @@
     import Header from "components/Layout/Header.svelte";
     import Footer from 'components/Layout/Footer.svelte';
     import Sidebar from "components/Layout/Sidebar.svelte";
+    import { getCookie } from "lib/tools";
 
     let sidebarVisible: boolean = true;
     let container: HTMLDivElement;
@@ -12,7 +13,8 @@
         
         console.log(sidebarVisible)
     }
-
+    let userInfo = getCookie("auth")
+    console.log(userInfo)
 </script>
 
 <Sidebar {toggleSidebar} />

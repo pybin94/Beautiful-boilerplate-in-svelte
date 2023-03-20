@@ -16,7 +16,7 @@
         </a>
         <i 
             on:click={toggleSidebar} 
-            on:keydown={toggleSidebar}
+            on:keypress={toggleSidebar}
             class="fa-regular fa-circle-dot"
         ></i>
         <!-- <i class="fa-regular fa-circle"></i> -->

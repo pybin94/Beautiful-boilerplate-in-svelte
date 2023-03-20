@@ -1,27 +1,33 @@
 <script lang="ts">
   import { Link } from "svelte-routing"
   import { got } from "lib/tools";
+  import DropDown from "./Modal/DropDown.svelte";
 
   let toggleUserModal: boolean = false;
   
-  const showUserModal = (): void => {
+  const toggleSignModal = (): void => {
     toggleUserModal === true ? toggleUserModal = false : toggleUserModal = true;
   }
 
-  const signOut = async () => {
-    const response = await got("/signout")
-    if(response.ststue == 1) location.reload();
-  }
 </script>
 
 <header class="header">
-    <div class="header__sign">
-      <div 
-        class="header__sign__button" 
-        on:click={signOut}
-        on:keypress={signOut}>로그아웃
-      </div>
-    </div>
+  <i class="fa-regular fa-sun"></i>
+  <!-- <i class="fa-solid fa-moon"></i> -->
+  <div class="header__sign">
+    <p>유저 이름</p>
+    <p>유저 권한</p>
+  </div>
+  <img 
+    on:click={toggleSignModal}
+    on:keypress={toggleSignModal}
+    class="header__profile-icon" 
+    src="/src/assets/icon/profile.png" 
+    alt="프로필 이미지"
+  >
+  {#if toggleUserModal}
+    <DropDown />
+  {/if}
 </header>
 {#if toggleUserModal}
   <!-- <SignIn /> -->

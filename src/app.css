@@ -3,9 +3,11 @@
   --font-size: 0.875rem;
   --card: #283046;
   --main-color: #06bee1;
+  --fade-color: #06bee11f;
   --light-color: #08bee1;
   --main-color-gradient: linear-gradient(118deg,#06bee1,#06bee1b3);
   --font-color: #d0d2d6;
+  --font-down-color: #b4b7bd;
   --border-color: #404656;
 }
 

@@ -84,7 +84,7 @@
                 class="fa-regular fa-eye"
                 bind:this={eyeIcon} 
                 on:click={revealPassword} 
-                on:keydown={revealPassword} 
+                on:keypress={revealPassword} 
             ></i>
         </div>
         <div class="login__form__remember-me">

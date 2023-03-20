@@ -1,0 +1,39 @@
+.drop-down {    
+    animation: smoothAppear 0.5s;
+    position: absolute;
+    top: 105%;
+    right: 10px;
+    background-color: var(--card);
+    border-radius: 5px;
+    box-shadow: 0 5px 25px rgb(34 41 47 / 10%);
+    width: 10rem;
+
+    &__menu{
+
+        &__list {
+            margin: 0.4rem 0;
+
+            a {
+                display: block;
+                color: var(--font-down-color);
+                font-size: 1rem;
+                padding: 0.5rem 1.2rem;
+
+                i {
+                    margin-right: 7px;
+                    width: 12px;
+                }
+
+                &:hover {
+                    background-color: var(--fade-color);
+                    color: var(--main-color);
+                }
+            }
+        }
+        
+        &__hr {
+            background: var(--border-color);
+            height: 1px;
+        }
+    }
+}
