@@ -15,9 +15,11 @@ export default defineConfig(({ mode }) => {
         src:  '/src',
         assets: '/src/assets',
         components: '/src/components',
-        lib: '/src/lib',
+        utils: '/src/utils',
         pages: '/src/pages',
         store: '/src/store',
+        interfases: '/src/interfases',
+        constants: '/src/constants',
       }
     },
     base: '/',

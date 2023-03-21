@@ -1,6 +1,6 @@
 <script lang="ts">
   import { Router, Route} from "svelte-routing";
-  import { getCookie } from "lib/tools"
+  import { getCookie } from "utils/tools"
 
   import Layout from 'pages/Layout.svelte';
   import Login from "pages/Login/Login.svelte";

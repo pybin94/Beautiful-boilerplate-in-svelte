@@ -1,26 +1,54 @@
 <script lang="ts">
-    import Header from "components/Layout/Header.svelte";
-    import Footer from 'components/Layout/Footer.svelte';
-    import Sidebar from "components/Layout/Sidebar.svelte";
-    import { getCookie } from "lib/tools";
+    import Header from "components/Layout/Header/Header.svelte";
+    import Sidebar from "components/Layout/Sidebar/Sidebar.svelte";
+    import Breadcrumb from "components/Layout/Breadcrumb/Breadcrumb.svelte";
+    import Footer from 'components/Layout/Footer/Footer.svelte';
+    import { getCookie } from "utils/tools";
+    import { onMount } from "svelte";
+    import { currentMenu, menus } from "constants/layout";
 
     let sidebarVisible: boolean = true;
-    let container: HTMLDivElement;
+    let container: HTMLElement;
+    let userInfo = getCookie("auth")
+
+    const handleUrlParams = () => {
+        currentMenu.url = window.location.pathname
+        menus.forEach(item => {
+            if(item.url == currentMenu.url) 
+            currentMenu.title = item.title;
+            currentMenu.subtitle = item.subTitle;
+        });
+    };
+
+    window.onpopstate = () => {
+        handleUrlParams();
+    };
 
     const toggleSidebar = () => {
         sidebarVisible = !sidebarVisible;
-        container.classList.toggle("hide")
-        
-        console.log(sidebarVisible)
-    }
-    let userInfo = getCookie("auth")
-    console.log(userInfo)
+        handelContainer();
+    };
+
+    const handelContainer = () => {
+        if(!sidebarVisible) {
+            container.classList.add("wide")
+        } else {
+            container.classList.remove("wide")
+        }
+    };
+
+    onMount(()=>{
+        handelContainer()
+        handleUrlParams()
+    });
+    
 </script>
 
-<Sidebar {toggleSidebar} />
+<Sidebar {toggleSidebar} {sidebarVisible} {currentMenu} {handleUrlParams}/>
 <div class="container" bind:this={container}>
-    <Header />
+    <Header {sidebarVisible}/>
     <div class="app-content">
+        <Breadcrumb {currentMenu}/>
         <slot />
     </div>
     <Footer />

@@ -1,13 +1,13 @@
 <script lang="ts">
-    import { deleteCookie, getCookie, got, setCookie } from "lib/tools";
+    import { deleteCookie, getCookie, got, setCookie } from "utils/tools";
     import { onMount } from "svelte";
 
     let identity: string;
-    let password: HTMLInputElement;
-    let eyeIcon: any;
-    let passwordWrap: any;
     let rememberMe: boolean;
-    let rememberMeLabel: any;
+    let password: HTMLInputElement;
+    let eyeIcon: HTMLElement;
+    let passwordWrap: HTMLElement;
+    let rememberMeLabel: HTMLElement;
 
     onMount(()=>{
         let rememberMeValue = getCookie("rememberMe")

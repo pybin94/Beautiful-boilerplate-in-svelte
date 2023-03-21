@@ -1,0 +1,26 @@
+.breadcrumb {
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+
+    &__title {
+        width: fit-content;
+        font-size: 1.7rem;
+        font-weight: 400;
+        padding-right: 1rem;
+        border-right: 1px solid var(--border-color);
+    }
+
+    &__home-icon {
+        padding-left: 1rem;
+        color: var(--main-color);
+    }
+
+    &__division {
+        padding: 0 0.35rem;
+    }
+
+    // &__subtitle {
+
+    // }
+}

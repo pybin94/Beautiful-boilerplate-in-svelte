@@ -1,14 +1,13 @@
 .container {
     margin-left: 230px;
+    transition: margin-left 0.3s;
+}
 
-    &.hide {
-        margin-left: 0;
-    }
-}
-.hide {
-    margin-left: 0;
-}
 .app-content {
-    padding: 7.75rem 2rem 0;
+    padding: 7.25rem 2rem 0;
     width: 100%;
+}
+
+:global(.container.wide) {
+    margin-left: 80px !important;
 }

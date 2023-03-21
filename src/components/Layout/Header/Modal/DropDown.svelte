@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { got } from "lib/tools";
+    import { got } from "utils/tools";
     import { link } from "svelte-routing";
 
     const dorpDownMenus = [
@@ -36,6 +36,6 @@
     </ul>
 </div>
 <style lang="scss">
-    @import "../../../App.scss";
+    @import "../../../../Keyframes.scss";
     @import "./DropDown.scss";
 </style>

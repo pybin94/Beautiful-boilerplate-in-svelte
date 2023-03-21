@@ -4,7 +4,7 @@ interface Popup {
 }
 
 export const popup = (popup: Popup): void  => {
-    let element: HTMLDivElement = document.createElement('div');
+    let element: HTMLElement = document.createElement('div');
     element.setAttribute("class", "popup");
     document.querySelector("#app").appendChild(element)
     document.querySelector(".popup").innerHTML = popupContent({status: popup.status, description: popup.description});
