@@ -9,19 +9,17 @@
 
     let sidebarVisible: boolean = true;
     let container: HTMLElement;
+    let slot: HTMLElement;
     let userInfo = getCookie("auth")
 
     const handleUrlParams = () => {
         currentMenu.url = window.location.pathname
         menus.forEach(item => {
-            if(item.url == currentMenu.url) 
-            currentMenu.title = item.title;
-            currentMenu.subtitle = item.subTitle;
+            if(item.url == currentMenu.url) {
+                currentMenu.title = item.title;
+                currentMenu.subtitle = item.subTitle;
+            }
         });
-    };
-
-    window.onpopstate = () => {
-        handleUrlParams();
     };
 
     const toggleSidebar = () => {
@@ -37,14 +35,19 @@
         }
     };
 
+    window.onpopstate = () => {
+        handleUrlParams();
+    };
+
     onMount(()=>{
         handelContainer()
         handleUrlParams()
     });
-    
+
+
 </script>
 
-<Sidebar {toggleSidebar} {sidebarVisible} {currentMenu} {handleUrlParams}/>
+<Sidebar {toggleSidebar} {handleUrlParams} {sidebarVisible} {currentMenu} />
 <div class="container" bind:this={container}>
     <Header {sidebarVisible}/>
     <div class="app-content">

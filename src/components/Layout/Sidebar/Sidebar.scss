@@ -1,6 +1,7 @@
 .sidebar {
     position: absolute;
     z-index: 200;
+    overflow-y: auto;
     top: 0;
     left: 0;
     background: var(--card);
@@ -36,14 +37,14 @@
             color: var(--main-color);
             font-size: 1.20rem;
             cursor: pointer;
-            margin: 0 0.25rem 1rem;
+            margin: 0 0 1rem auto;
         }
     }
 
     &__menu {
 
         .truncate {
-            margin: 2.286rem 20px 0.8rem;
+            margin: 2.286rem 17px 0.8rem;
             height: 15px;
 
             a {
@@ -61,9 +62,9 @@
             border-radius: 4px;
 
             a {
-                padding: 10px 18px;
+                padding: 10px 15px;
                 font-size: 1rem;
-                color: #fff;
+                color: var(--font-color);
 
                 i {
                     transition: margin 0.3s;
@@ -89,6 +90,7 @@
 
     &:hover {
         width: 230px !important;
+        overflow-y: auto !important;
         
         .sidebar__header__brand__text {
             opacity: 1;
@@ -119,8 +121,8 @@
 }
 
 :global(.sidebar.hide) {
-    width: 80px !important;
-    overflow: hidden;
+    width: 75px !important;
+    overflow: hidden !important;
 }
 
 :global(.truncate.hide) {
@@ -155,6 +157,10 @@
 :global(.navigate.active) {
     background: var(--main-color-gradient);
     box-shadow: var(--main-color-shadow);
+
+    a {
+        color: #fff;
+    }
 }
 
 :global(.navigate.hide) {

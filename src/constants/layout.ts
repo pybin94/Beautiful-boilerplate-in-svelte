@@ -1,26 +1,49 @@
 export interface CurrentMenu {
     title: string,
     subtitle: string,
-    url: string
+    url: string,
+    slot: any,
 }
 
 const icon = { 
     ellipsis: "fa-solid fa-ellipsis",
     home: "fa-solid fa-house",
-    user: "fa-regular fa-user",
+    userAddend: "fa-solid fa-user-plus",
+    userList: "fa-solid fa-user-group",
+    adminAppend: "fa-solid fa-user-gear",
+    adminList: "fa-solid fa-users-gear",
 };
 
 export const menus = [ 
     {title: "일반", class: "truncate", url: "#", icon: icon.ellipsis, subTitle: null},
     {title: "대시보드", class: "navigate", url: "/", icon: icon.home, subTitle: "Dashboard"},
-    {title: "대시보드", class: "navigate", url: "/test", icon: icon.home, subTitle: "Dashboard" },
-    {title: "유저 관리", class: "truncate", url: "#", icon: icon.ellipsis, subTitle: "User Management"},
-    {title: "유저", class: "navigate", url: "/user", icon: icon.user, subTitle: "User"},
-    {title: "관리자", class: "navigate", url: "/asdjkasklj", icon: icon.user, subTitle: "Administrator"},
+    {title: "유저", class: "truncate", url: "#", icon: icon.ellipsis, subTitle: null},
+    {title: "유저 생성", class: "navigate", url: "/user/append", icon: icon.userAddend, subTitle: "User Create"},
+    {title: "유저 목록", class: "navigate", url: "/user/list", icon: icon.userList, subTitle: "User List"},
+    {title: "관리자", class: "truncate", url: "#", icon: icon.ellipsis, subTitle: null},
+    {title: "관리자 생성", class: "navigate", url: "/admin/append", icon: icon.adminAppend, subTitle: "Admin Create"},
+    {title: "관리자 목록", class: "navigate", url: "/admin/list", icon: icon.adminList, subTitle: "Admin List"},
+    // {title: "일반", class: "truncate", url: "#", icon: icon.ellipsis, subTitle: null},
+    // {title: "대시보드", class: "navigate", url: "/", icon: icon.home, subTitle: "Dashboard"},
+    // {title: "유저", class: "truncate", url: "#", icon: icon.ellipsis, subTitle: null},
+    // {title: "유저 생성", class: "navigate", url: "/user/append", icon: icon.userAddend, subTitle: "User Create"},
+    // {title: "유저 목록", class: "navigate", url: "/user/list", icon: icon.userList, subTitle: "User List"},
+    // {title: "관리자", class: "truncate", url: "#", icon: icon.ellipsis, subTitle: null},
+    // {title: "관리자 생성", class: "navigate", url: "/admin/append", icon: icon.adminAppend, subTitle: "Admin Create"},
+    // {title: "관리자 목록", class: "navigate", url: "/admin/list", icon: icon.adminList, subTitle: "Admin List"},
+    // {title: "일반", class: "truncate", url: "#", icon: icon.ellipsis, subTitle: null},
+    // {title: "대시보드", class: "navigate", url: "/", icon: icon.home, subTitle: "Dashboard"},
+    // {title: "유저", class: "truncate", url: "#", icon: icon.ellipsis, subTitle: null},
+    // {title: "유저 생성", class: "navigate", url: "/user/append", icon: icon.userAddend, subTitle: "User Create"},
+    // {title: "유저 목록", class: "navigate", url: "/user/list", icon: icon.userList, subTitle: "User List"},
+    // {title: "관리자", class: "truncate", url: "#", icon: icon.ellipsis, subTitle: null},
+    // {title: "관리자 생성", class: "navigate", url: "/admin/append", icon: icon.adminAppend, subTitle: "Admin Create"},
+    // {title: "관리자 목록", class: "navigate", url: "/admin/list", icon: icon.adminList, subTitle: "Admin List"},
 ];
 
 export let currentMenu: CurrentMenu = {
     title: "",
     subtitle: "",
-    url: ""
+    url: "",
+    slot: null,
 }

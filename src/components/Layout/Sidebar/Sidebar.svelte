@@ -1,12 +1,13 @@
 <script lang="ts">
+    import type { CurrentMenu } from "constants/layout";
     import { onMount } from "svelte";
     import { link } from "svelte-routing"
     import { menus } from "constants/layout";
     
     export let toggleSidebar: any;
-    export let sidebarVisible: boolean;
     export let handleUrlParams: any;
-    export let currentMenu;
+    export let sidebarVisible: boolean;
+    export let currentMenu: CurrentMenu;
 
     let sidebar: HTMLElement;
     let hideIcon: HTMLElement;

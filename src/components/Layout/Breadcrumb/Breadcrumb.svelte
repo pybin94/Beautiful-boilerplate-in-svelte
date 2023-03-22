@@ -1,5 +1,5 @@
 <script lang="ts">
-    import type { CurrentMenu } from "interfaces/layout";
+    import type { CurrentMenu } from "constants/layout";
     import { link } from "svelte-routing";
     export let currentMenu: CurrentMenu;
 </script>

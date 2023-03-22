@@ -5,7 +5,7 @@
 
     &__title {
         width: fit-content;
-        font-size: 1.7rem;
+        font-size: 1.6rem;
         font-weight: 400;
         padding-right: 1rem;
         border-right: 1px solid var(--border-color);
@@ -17,10 +17,12 @@
     }
 
     &__division {
-        padding: 0 0.35rem;
+        color: var(--font-color-down);
+        padding: 0 0.5rem;
     }
 
-    // &__subtitle {
-
-    // }
+    &__subtitle {
+        color: var(--font-color-down);
+        font-size: 1rem;
+    }
 }

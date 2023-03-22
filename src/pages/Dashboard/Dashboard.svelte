@@ -4,8 +4,8 @@
     let toggleStatus: number = 0;
 
 </script>
-    <h1 class="text-4xl font-bold my-8">MAIN</h1>
+    <h1 class="text-4xl font-bold my-8">Dashboard</h1>
 
 <style lang="scss">
-    @import "./main.scss";
+    @import "./Dashboard.scss";
 </style>

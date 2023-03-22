@@ -1,6 +1,7 @@
 <script lang="ts">
     import { deleteCookie, getCookie, got, setCookie } from "utils/tools";
     import { onMount } from "svelte";
+    import { handelSignin } from "./LoginCard.service"
 
     let identity: string;
     let rememberMe: boolean;
@@ -44,32 +45,13 @@
         }
     }
 
-    const handelSubmit = async (): Promise<void> => {
-        let params = {
-            identity,
-            password: password.value
-        }
-
-        const response = await got("/signin", "POST", params);
-        
-        if (response.status === 1) {
-            rememberMe == true
-            ? setCookie("rememberMe", identity)
-            : deleteCookie("rememberMe")
-
-            location.reload();
-        } else {
-            alert("회원 정보가 올바르지 않습니다")
-        }
-    }
-
 </script>
 <article class="login">
     <div class="login__title">
         <img class="login__title__logo" src="/src/assets/logo.png" alt="">
         <p class="login__title__text">{process.env.SITENAME}</p>
     </div>
-    <form class="login__form" on:submit|preventDefault={handelSubmit}>
+    <form class="login__form" on:submit|preventDefault={()=>{handelSignin(identity, password.value, rememberMe)}}>
         <p class="login__form__text">User ID</p>
         <input class="login__form__id" type="text" required bind:value={identity}>
         <p id="password" class="login__form__text">Password</p>
