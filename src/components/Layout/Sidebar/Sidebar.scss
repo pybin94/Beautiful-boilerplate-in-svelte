@@ -6,7 +6,7 @@
     left: 0;
     background: var(--card);
     height: 100vh;
-    width: 230px;
+    width: 235px;
     padding: 15px;
     transition: all 0.3s;
 
@@ -87,9 +87,8 @@
         }
     }
 
-
     &:hover {
-        width: 230px !important;
+        width: 235px !important;
         overflow-y: auto !important;
         
         .sidebar__header__brand__text {
@@ -175,4 +174,10 @@
 
 :global(.sidebar.hide .sidebar__header__brand__text) {
     opacity: 0;
+}
+
+@media screen and (max-width: 1200px) {
+    .sidebar {
+        left: -235px;
+    }
 }

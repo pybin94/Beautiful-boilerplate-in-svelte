@@ -9,7 +9,6 @@
 
     let sidebarVisible: boolean = true;
     let container: HTMLElement;
-    let slot: HTMLElement;
     let userInfo = getCookie("auth")
 
     const handleUrlParams = () => {
@@ -50,10 +49,10 @@
 <Sidebar {toggleSidebar} {handleUrlParams} {sidebarVisible} {currentMenu} />
 <div class="container" bind:this={container}>
     <Header {sidebarVisible}/>
-    <div class="app-content">
+    <main class="app-content">
         <Breadcrumb {currentMenu}/>
         <slot />
-    </div>
+    </main>
     <Footer />
 </div>
 

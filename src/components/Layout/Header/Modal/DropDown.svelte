@@ -36,6 +36,6 @@
     </ul>
 </div>
 <style lang="scss">
-    @import "../../../../Keyframes.scss";
+    @import "../../../../styles/animation.scss";
     @import "./DropDown.scss";
 </style>

@@ -2,19 +2,27 @@
   position: fixed;
   display: flex;
   background: var(--card);
-  width: calc(100% - 4rem - 230px);
-  margin: 1.2rem 2rem 0;
+  width: calc(100% - 4rem - 227px);
+  margin: 1.2rem 1.7rem 0;
   padding: 0.8rem 1.5rem;
   border-radius: 0.428rem;
   align-items: center;
   transition: width 0.3s;
 
-  i {
-    font-size: 1.25rem;
-    width: 1.25rem;
+  &__icons {
     margin-right: auto;
-    color: var(--main-color);
-    cursor: pointer;
+    
+    i {
+      font-size: 1.25rem;
+      width: 1.25rem;
+      color: var(--main-color);
+      cursor: pointer;
+      margin-right: 1.5rem;
+    }
+
+    .fa-bars {
+      display: none;
+    }
   };
 
   &__sign {
@@ -35,9 +43,18 @@
     border-radius: 100%;
     cursor: pointer;
   }
-
 }
   
 :global(.header.wide) {
-  width: calc(100% - 4rem - 80px) !important;
+  width: calc(100% - 4rem - 67px) !important;
+}
+
+@media screen and (max-width: 1200px) {
+  .header {
+    width: calc(100% - 4rem + 8px) !important;
+  }
+
+  .fa-bars {
+    display: unset !important;
+  }
 }

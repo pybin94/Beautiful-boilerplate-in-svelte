@@ -1,13 +1,19 @@
 .container {
-    margin-left: 230px;
+    margin-left: 235px;
     transition: margin-left 0.3s;
 }
 
 .app-content {
-    padding: 7.2rem 2rem 0;
+    padding: 7.2rem 1.7rem 0;
     width: 100%;
 }
 
 :global(.container.wide) {
-    margin-left: 80px !important;
+    margin-left: 75px !important;
+}
+
+@media screen and (max-width: 1200px) {
+    .container {
+        margin-left: 0 !important;
+    }
 }

@@ -1,8 +1,8 @@
 <script lang="ts">
-    import { deleteCookie, getCookie, got, setCookie } from "utils/tools";
     import { onMount } from "svelte";
-    import { handelSignin } from "./LoginCard.service"
-
+    import { handelSignin } from "./LoginCard.service";
+    import { getCookie } from "utils/tools";
+    import { handleValidate } from "utils/tools.css";
     let identity: string;
     let rememberMe: boolean;
     let password: HTMLInputElement;
@@ -11,18 +11,29 @@
     let rememberMeLabel: HTMLElement;
 
     onMount(()=>{
-        let rememberMeValue = getCookie("rememberMe")
+        let rememberMeValue = getCookie("rememberMe");
         if ( rememberMeValue ) {
             rememberMe = true;
             identity = rememberMeValue
-            rememberMeLabel.classList.add("active")
+            rememberMeLabel.classList.add("active");
         } else {
             rememberMe = false
         }
     })
 
     const passwordFocus = (): void => {
-        passwordWrap.classList.toggle("focus")
+        passwordWrap.classList.add("focus")
+    }
+
+    const passwordBlur = (): void => {
+        passwordWrap.classList.remove("focus");
+        if (!password.value) {
+            password.classList.add("invalid");
+            passwordWrap.classList.add("invalid");
+        } else {
+            password.classList.remove("invalid");
+            passwordWrap.classList.remove("invalid");
+        }
     }
 
     const checkRememberMe = (): void => {
@@ -53,13 +64,23 @@
     </div>
     <form class="login__form" on:submit|preventDefault={()=>{handelSignin(identity, password.value, rememberMe)}}>
         <p class="login__form__text">User ID</p>
-        <input class="login__form__id" type="text" required bind:value={identity}>
+        <input 
+            class="login__form__id" 
+            type="text" 
+            required 
+            placeholder=""
+            bind:value={identity}
+            on:blur={(e)=>{handleValidate(e)}}
+            on:keypress={(e)=>{handleValidate(e)}}
+        >
         <p id="password" class="login__form__text">Password</p>
         <div class="login__form__password" bind:this={passwordWrap}>
             <input 
-                type="password" required 
+                type="password" 
+                required 
+                placeholder="Password"
                 bind:this={password} 
-                on:blur={passwordFocus} 
+                on:blur={passwordBlur} 
                 on:focus={passwordFocus}
             >
             <i 

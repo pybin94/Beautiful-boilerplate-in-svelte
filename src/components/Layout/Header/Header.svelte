@@ -43,12 +43,15 @@
 </script>
 
 <header class="header" bind:this={header}>
-  <i 
-    bind:this={nightModeIcon} 
-    on:click={handleNightMode} 
-    on:keypress={handleNightMode} 
-    class="fa-regular fa-sun"
-  ></i>
+  <div class="header__icons">
+    <i class="fa-solid fa-bars"></i>
+    <i 
+      bind:this={nightModeIcon} 
+      on:click={handleNightMode} 
+      on:keypress={handleNightMode} 
+      class="fa-regular fa-sun"
+    ></i>
+  </div>
   <div class="header__sign">
     <p>유저 이름</p>
     <p>유저 권한</p>

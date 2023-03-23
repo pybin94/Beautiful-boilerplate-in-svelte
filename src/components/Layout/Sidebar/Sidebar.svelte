@@ -11,9 +11,8 @@
 
     let sidebar: HTMLElement;
     let hideIcon: HTMLElement;
-    let menuLists: NodeListOf<Element>;
-
-
+    let menuLists: NodeListOf<Element>
+        
     onMount(()=>{
         menuLists = document.querySelectorAll(".sidebar__menu__list");
     })
