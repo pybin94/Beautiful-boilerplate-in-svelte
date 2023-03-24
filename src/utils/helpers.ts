@@ -10,7 +10,7 @@ export const url = (params: string): string => {
     return process.env.URL + params
 }
 
-export const got = async (urlParams: string = "", method: string = "get", setParams?: object): Promise<any> => {
+export const got = async (urlParams: string = "", method: string = "GET", setParams?: object): Promise<any> => {
 
     let api: string = url(urlParams)
     let options: object = {

@@ -1,25 +1,25 @@
 <script lang="ts">
     import { userFormBasic } from "constants/userCreate";
-    import { handleValidate } from "utils/tools.css";
+    import { handleValidate } from "utils/validator";
 
-    export let bindBasic: object;
+    export let bindBasic: any;
 </script>
 
-<div class="create-user">
+<form class="create-user">
     {#each userFormBasic as item, index}
         <div class="create-user__form">
             <label for={item.id}>{item.title}</label>
             <input 
                 id={item.id}
-                bind:this={bindBasic[index]}
+                bind:value={bindBasic[index]}
                 on:keydown={(e)=>{handleValidate(e)}}
                 on:blur={(e)=>{handleValidate(e)}}
-                type={item.type}
                 placeholder={item.placeholder}
+                autocomplete="new-password"
             >
         </div>
     {/each}
-</div>
+</form>
 
 <style lang="scss">
     @import "../common.scss";

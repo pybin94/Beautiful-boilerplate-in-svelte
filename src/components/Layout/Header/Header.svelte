@@ -1,11 +1,11 @@
 <script lang="ts">
-  import { Link } from "svelte-routing"
-  import { got } from "utils/tools";
   import DropDown from "./Modal/DropDown.svelte";
-  import { nightMode } from "store/store"
   import { onMount } from "svelte";
+  import { nightMode } from "stores/store";
 
   export let sidebarVisible: boolean;
+  export let toggleSidebarMobile: any;
+
   let toggleUserModal: boolean = false;
   let header: HTMLElement;
   let nightModeIcon: HTMLElement;
@@ -44,7 +44,11 @@
 
 <header class="header" bind:this={header}>
   <div class="header__icons">
-    <i class="fa-solid fa-bars"></i>
+    <i 
+      class="fa-solid fa-bars"
+      on:click={toggleSidebarMobile}
+      on:keypress={toggleSidebarMobile} 
+    ></i>
     <i 
       bind:this={nightModeIcon} 
       on:click={handleNightMode} 

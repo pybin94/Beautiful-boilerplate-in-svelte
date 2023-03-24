@@ -1,24 +1,28 @@
 <script lang="ts">
-    import Header from "components/userCreate/Header/Header.svelte";
-    import BasicInfo from "components/userCreate/BasicInfo/BasicInfo.svelte";
-    import AdvencedInfo from "components/userCreate/AdvencedInfo/AdvencedInfo.svelte";
-    import FullInfo from "components/userCreate/FullInfo/FullInfo.svelte";
-    import Footer from "components/userCreate/Footer/Footer.svelte";
+    import Header from "components/UserCreate/Header/Header.svelte";
+    import BasicInfo from "components/UserCreate/BasicInfo/BasicInfo.svelte";
+    import AdvencedInfo from "components/UserCreate/AdvencedInfo/AdvencedInfo.svelte";
+    import FullInfo from "components/UserCreate/FullInfo/FullInfo.svelte";
+    import Footer from "components/UserCreate/Footer/Footer.svelte";
     import { createUserLevel } from "constants/userCreate";
 
-    let identity: HTMLElement;
-    let username: HTMLElement;
-    let password: HTMLElement;
-    let passwordConfirm: HTMLElement;
+    let identity: HTMLInputElement;
+    let username: HTMLInputElement;
+    let password: HTMLInputElement;
+    let passwordConfirm: HTMLInputElement;
+    let set1: HTMLInputElement;
+    let set2: HTMLInputElement;
+    let set3: HTMLInputElement;
+    let set4: HTMLInputElement;
 
-    const bindBasic = [identity, username, password, passwordConfirm]
-    const bindAdvenced = [identity, username, password, passwordConfirm]
+    const bindBasic = [identity, username, password, passwordConfirm];
+    const bindAdvenced = [set1, set2, set3, set4];
+    
     let page: number = 1;
 
     const paging = (value: number):void => {
         if(value === 1) page++ ;    // next
         if(value === 0) page-- ;    // previous
-        console.log(page)
     }
 
 </script>
@@ -43,7 +47,7 @@
             {/if}
         </div>
         <div class="card__footer">
-            <Footer {page} {paging}/>
+            <Footer {page} {paging} {bindBasic} {bindAdvenced} />
         </div>
     </div>
 </div>

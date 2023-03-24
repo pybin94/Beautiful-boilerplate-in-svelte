@@ -26,6 +26,9 @@
     "components/*": ["src/components/*"],
     "utils/*": ["src/utils/*"],
     "pages/*": ["src/pages/*"],
-    "store/*": ["src/store/*"],
+    "styles/*": ["src/styles/*"],
+    "stores/*": ["src/stores/*"],
+    "services/*": ["src/services/*"],
+    "constants/*": ["src/constants/*"],
   }
 }

@@ -3,11 +3,12 @@
     import Sidebar from "components/Layout/Sidebar/Sidebar.svelte";
     import Breadcrumb from "components/Layout/Breadcrumb/Breadcrumb.svelte";
     import Footer from 'components/Layout/Footer/Footer.svelte';
-    import { getCookie } from "utils/tools";
+    import { getCookie } from "utils/helpers";
     import { onMount } from "svelte";
     import { currentMenu, menus } from "constants/layout";
 
     let sidebarVisible: boolean = true;
+    let sidebarVisibleMobile: boolean = false;
     let container: HTMLElement;
     let userInfo = getCookie("auth")
 
@@ -19,11 +20,16 @@
                 currentMenu.subtitle = item.subTitle;
             }
         });
+        sidebarVisibleMobile = false;
     };
 
     const toggleSidebar = () => {
         sidebarVisible = !sidebarVisible;
         handelContainer();
+    };
+
+    const toggleSidebarMobile = () => {
+        sidebarVisibleMobile = !sidebarVisibleMobile;
     };
 
     const handelContainer = () => {
@@ -38,17 +44,27 @@
         handleUrlParams();
     };
 
+    window.addEventListener("resize", () => {
+        if(window.innerWidth > 1200) {
+            sidebarVisible = true
+            sidebarVisibleMobile = true;
+            container.classList.remove("wide")
+        } else {
+            sidebarVisible = true
+            sidebarVisibleMobile = false;
+        }
+    })
+
     onMount(()=>{
         handelContainer()
         handleUrlParams()
     });
 
-
 </script>
 
-<Sidebar {toggleSidebar} {handleUrlParams} {sidebarVisible} {currentMenu} />
+<Sidebar {toggleSidebar} {toggleSidebarMobile} {handleUrlParams} {sidebarVisible} {sidebarVisibleMobile} {currentMenu} />
 <div class="container" bind:this={container}>
-    <Header {sidebarVisible}/>
+    <Header {sidebarVisible} {toggleSidebarMobile}/>
     <main class="app-content">
         <Breadcrumb {currentMenu}/>
         <slot />

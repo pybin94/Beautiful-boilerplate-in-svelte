@@ -1,8 +1,9 @@
 <script lang="ts">
+    import { signin } from "services/sign";
     import { onMount } from "svelte";
-    import { handelSignin } from "./LoginCard.service";
-    import { getCookie } from "utils/tools";
-    import { handleValidate } from "utils/tools.css";
+    import { getCookie } from "utils/helpers";
+    import { handleValidate } from "utils/validator";
+
     let identity: string;
     let rememberMe: boolean;
     let password: HTMLInputElement;
@@ -62,7 +63,7 @@
         <img class="login__title__logo" src="/src/assets/logo.png" alt="">
         <p class="login__title__text">{process.env.SITENAME}</p>
     </div>
-    <form class="login__form" on:submit|preventDefault={()=>{handelSignin(identity, password.value, rememberMe)}}>
+    <form class="login__form" on:submit|preventDefault={()=>{signin(identity, password.value, rememberMe)}}>
         <p class="login__form__text">User ID</p>
         <input 
             class="login__form__id" 

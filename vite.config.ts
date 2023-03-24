@@ -17,9 +17,11 @@ export default defineConfig(({ mode }) => {
         components: '/src/components',
         utils: '/src/utils',
         pages: '/src/pages',
-        store: '/src/store',
+        stores: '/src/stores',
         interfases: '/src/interfases',
         constants: '/src/constants',
+        services: '/src/services',
+        styles: '/src/styles',
       }
     },
     base: '/',

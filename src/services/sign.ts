@@ -1,6 +1,6 @@
-import { got, setCookie ,deleteCookie } from "utils/tools"
+import { got, setCookie ,deleteCookie } from "utils/helpers"
 
-export const handelSignin = async (identity: string, password: string, rememberMe: boolean): Promise<void> => {
+export const signin = async (identity: string, password: string, rememberMe: boolean): Promise<void> => {
 
     let params = {
         identity,
@@ -18,4 +18,9 @@ export const handelSignin = async (identity: string, password: string, rememberM
     } else {
         alert("회원 정보가 올바르지 않습니다")
     }
+}
+
+export const signout = async () => {
+    const response = await got("/signout")
+    if(response.ststue == 1) location.reload();
 }

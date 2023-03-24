@@ -5,11 +5,14 @@
     import { menus } from "constants/layout";
     
     export let toggleSidebar: any;
+    export let toggleSidebarMobile: any;
     export let handleUrlParams: any;
     export let sidebarVisible: boolean;
+    export let sidebarVisibleMobile: boolean;
     export let currentMenu: CurrentMenu;
 
     let sidebar: HTMLElement;
+    let sidebarWrap: HTMLElement;
     let hideIcon: HTMLElement;
     let menuLists: NodeListOf<Element>
         
@@ -18,6 +21,7 @@
     })
 
     $: if(sidebar && menuLists){
+        console.log(sidebarVisible)
         if(sidebarVisible == true) {
             sidebar.classList.remove("hide")
             hideIcon.classList.remove("fa-circle")
@@ -25,6 +29,10 @@
             menuLists.forEach(item => {
                 item.classList.remove("hide")
             });
+
+            sidebar.style.left = "0";
+            sidebarWrap.classList.remove("visible");
+
         } else {
             sidebar.classList.add("hide");
             hideIcon.classList.add("fa-circle")
@@ -33,9 +41,23 @@
                 item.classList.add("hide")
             });
         }
-    };
-</script>
 
+        if(window.innerWidth <= 1200) {
+            if(sidebarVisibleMobile == true) {
+                sidebar.style.left = "0"
+                sidebarWrap.classList.add("visible");
+            } else {
+                sidebar.style.left = "-235px";
+                sidebarWrap.classList.remove("visible");
+            }
+        }
+    };
+
+</script>
+<div 
+    class="sidebar-wrap"
+    bind:this={sidebarWrap}
+></div>
 <aside 
     class="sidebar"
     bind:this={sidebar}
@@ -45,6 +67,11 @@
             <img class="sidebar__header__brand__logo" src="/src/assets/logo.png" alt="">
             <p class="sidebar__header__brand__text">{process.env.SITENAME}</p>
         </a>
+        <i 
+            on:click={toggleSidebarMobile} 
+            on:keypress={toggleSidebarMobile}
+            class="fa-solid fa-xmark"
+        ></i>
         <i 
             bind:this={hideIcon}
             on:click={toggleSidebar} 

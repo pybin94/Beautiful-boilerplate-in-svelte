@@ -2,17 +2,17 @@
     import { userFormAdvenced, userFormBasic } from "constants/userCreate";
 
     export let bindBasic: object;
-    export let bindAdvenced: object
+    export let bindAdvenced: object;
 </script>
-<div class="create-user">
+<form class="create-user">
     {#each userFormBasic as item, index}
         <div class="create-user__form">
             <label for={item.id}>{item.title}</label>
             <input 
                 id={item.id}
-                bind:this={bindBasic[index]}
-                type={item.type}
-                placeholder={item.placeholder}
+                bind:value={bindBasic[index]}
+                autocomplete="new-password"
+                disabled
             >
         </div>
     {/each}
@@ -21,13 +21,12 @@
             <label for={item.id}>{item.title}</label>
             <input 
                 id={item.id}
-                bind:this={bindAdvenced[index]}
-                type={item.type}
-                placeholder={item.placeholder}
+                bind:value={bindAdvenced[index]}
+                disabled
             >
         </div>
     {/each}
-</div>
+</form>
 
 <style lang="scss">
     @import "../common.scss";

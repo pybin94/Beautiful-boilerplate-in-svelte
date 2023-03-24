@@ -1,103 +1,87 @@
-:global {
-  button {
-    background: var(--main-color);
-    padding: 0.586rem 1.2rem;
-    border-radius: 0.358rem;
-    border: 1px solid transparent;
-    border-color: (--main-color);
-    text-align: center;
-    color: #fff;
-    cursor: pointer;
-  }
-
-  input {
-    color: var(--font-color);
-    font-size: 1rem; 
-    padding: 0.538rem 1rem;
-    background: var(--card);
-    border: 1px solid;
-    border-radius: 4px;
-    border-color: var(--border-color);
-    transition: 0.3s border ;
-    width: 100%;
-    transition: text-indent 0.3s;
-  }
-
-  input:focus {
-    transition: 0.3s border ;
-    border: 1px solid;
-    border-color: var(--main-color);
-  
-  }
-
-  input:focus::-webkit-input-placeholder {
-    text-indent: 5px;
-  }
-
-  input:focus::-moz-placeholder {
-    text-indent: 5px;
-  }
-
-  input:focus:-ms-input-placeholder {
-    text-indent: 5px;
-  }
-
-  input:focus::-ms-input-placeholder {
-    text-indent: 5px;
-  }
-
-  input:focus-visible,
-  select:focus-visible {
-    outline: none;
-  }
-
-  label {
-    color: var(--font-color);
-    font-size: 0.85rem;
-  }
-
-  .invalid {
-    border-color: #ff4a4a !important;
-  }
-
-  input.invalid {
-    background: url(./assets/icon/error.svg) no-repeat;
-    background-position: right 10px center;
-    background-size: 1.125rem;
-  }
-
-  select {
-    padding: 0.4rem 0.75rem;
-    padding-right: 1.5rem;
-    color: var(--font-color-down);
-    border-color: var(--border-color);
-    border-radius: 4px;
-    font-size: 0.85rem;
-    appearance:none;
-    background: var(--card) url(./assets/icon/select-arrow.svg) no-repeat;
-    background-size: 0.6rem;
-    background-position: 83% center;
-  }
-
-  select:focus {
-    border-color: var(--main-color);
-  }
-
-  #app {
-    height: 100vh;
-    overflow: auto;
-    background: var(--background);
-  }
+:global(#app) {
+  height: 100vh;
+  overflow: auto;
+  background: var(--background);
 }
 
-@keyframes bounce {
-  0% {
-    transform: scale(1) translate(-50%, -50%);
-  }
-  50% {
-    transform: scale(1.1) translate(-50%, -50%);
-  }
-  100% {
-    transform: scale(1) translate(-50%, -50%); 
-  }
+:global(button) {
+  background: var(--main-color);
+  padding: 0.586rem 1.2rem;
+  border-radius: 0.358rem;
+  border: 1px solid transparent;
+  border-color: (--main-color);
+  text-align: center;
+  color: #fff;
+  cursor: pointer;
+}
+
+:global(input) {
+  color: var(--font-color);
+  font-size: 1rem; 
+  padding: 0.538rem 1rem;
+  background: var(--card);
+  border: 1px solid;
+  border-radius: 4px;
+  border-color: var(--border-color);
+  transition: 0.3s border ;
+  width: 100%;
+  transition: text-indent 0.3s;
+}
+
+:global(input:focus) {
+  transition: 0.3s border ;
+  border: 1px solid;
+  border-color: var(--main-color);
+}
+
+:global(input:focus::-webkit-input-placeholder) {
+  text-indent: 5px;
+}
+
+:global(input:focus::-moz-placeholder) {
+  text-indent: 5px;
+}
+
+:global(input:focus:-ms-input-placeholder) {
+  text-indent: 5px;
+}
+
+:global(input:focus::-ms-input-placeholder) {
+  text-indent: 5px;
+}
+
+:global(input:focus-visible, select:focus-visible) {
+  outline: none;
+}
+
+:global(label) {
+  color: var(--font-color);
+  font-size: 0.85rem;
+}
+
+:global(.invalid) {
+  border-color: #ff4a4a !important;
+}
+
+:global(input.invalid) {
+  background: url(./assets/icon/error.svg) no-repeat;
+  background-position: right 10px center;
+  background-size: 1.125rem;
+}
+
+:global(select) {
+  padding: 0.4rem 0.75rem;
+  padding-right: 1.5rem;
+  color: var(--font-color-down);
+  border-color: var(--border-color);
+  border-radius: 4px;
+  font-size: 0.85rem;
+  appearance:none;
+  background: var(--card) url(./assets/icon/select-arrow.svg) no-repeat;
+  background-size: 0.6rem;
+  background-position: 83% center;
+}
+
+:global(select:focus) {
+  border-color: var(--main-color);
 }

@@ -1,6 +1,6 @@
 <script lang="ts">
   import { Router, Route} from "svelte-routing";
-  import { getCookie } from "utils/tools"
+  import { getCookie } from "utils/helpers"
 
   import Layout from 'pages/Layout/Layout.svelte';
   import Login from "pages/Login/Login.svelte";
@@ -25,9 +25,9 @@
   <Router basepath="/">
     <Layout>
       <Route path="/" name="dashboard"><Dashboard /></Route>
-      <Route path="/user/append" name="UserCreate"><UserCreate/></Route>
+      <Route path="/user/create" name="UserCreate"><UserCreate/></Route>
       <Route path="/user/list"><UserList/></Route>
-      <Route path="/admin/append"><AdminAppend/></Route>
+      <Route path="/admin/create"><AdminAppend/></Route>
       <Route path="/admin/list"><AdminList/></Route>
       <Route path="/*"><Dashboard /></Route>
     </Layout>
