@@ -5,6 +5,7 @@
 }
 
 :global(button) {
+  min-width: fit-content;
   background: var(--main-color);
   padding: 0.586rem 1.2rem;
   border-radius: 0.358rem;
@@ -17,7 +18,7 @@
 
 :global(input) {
   color: var(--font-color);
-  font-size: 1rem; 
+  font-size: 1rem;
   padding: 0.538rem 1rem;
   background: var(--card);
   border: 1px solid;
@@ -79,7 +80,7 @@
   appearance:none;
   background: var(--card) url(./assets/icon/select-arrow.svg) no-repeat;
   background-size: 0.6rem;
-  background-position: 83% center;
+  background-position: right 8px center;
 }
 
 :global(select:focus) {

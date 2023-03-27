@@ -14,14 +14,13 @@
     let sidebar: HTMLElement;
     let sidebarWrap: HTMLElement;
     let hideIcon: HTMLElement;
-    let menuLists: NodeListOf<Element>
+    let menuLists: NodeListOf<Element>;
         
     onMount(()=>{
         menuLists = document.querySelectorAll(".sidebar__menu__list");
     })
 
     $: if(sidebar && menuLists){
-        console.log(sidebarVisible)
         if(sidebarVisible == true) {
             sidebar.classList.remove("hide")
             hideIcon.classList.remove("fa-circle")

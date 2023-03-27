@@ -9,6 +9,7 @@
   import UserList from "pages/UserList/UserList.svelte";
   import UserCreate from "pages/UserCreate/UserCreate.svelte";
   import AdminList from "pages/AdminList/AdminList.svelte";
+  import Test from "pages/Test.svelte";
 
   document.title = process.env.SITENAME
   
@@ -29,6 +30,7 @@
       <Route path="/user/list"><UserList/></Route>
       <Route path="/admin/create"><AdminAppend/></Route>
       <Route path="/admin/list"><AdminList/></Route>
+      <Route path="/test"><Test /></Route>
       <Route path="/*"><Dashboard /></Route>
     </Layout>
   </Router>
