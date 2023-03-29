@@ -1,0 +1,13 @@
+.create-user {
+ 
+    &__title {
+        width: 100%;
+        font-size: 1.15rem;
+
+        &__subtitle {
+            padding: 0.2rem 0;
+            font-size: 0.8rem;
+            color: var(--font-color-dark);
+        }
+    }
+}

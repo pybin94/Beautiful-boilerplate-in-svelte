@@ -1,11 +1,3 @@
-import * as crypto from 'crypto';
-
-interface Json {
-    status: number;
-    data?: any;
-    message: string;
-}
-
 export const url = (params: string): string => {
     return process.env.URL + params
 }
@@ -64,15 +56,4 @@ export const setCookie = (cookieName: string, value: any, expires: number = 0): 
 
 export const deleteCookie = (cookieName: string): void => {
 	document.cookie = cookieName + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT; path=/';
-}
-
-export const decript = () => {
-    //    const [encryptedHex] = text.split(':');
-    // const encrypted = Buffer.from(encryptedHex, 'hex');
-    // const decipher = crypto.createDecipheriv(this.algorithm, this.key, this.iv);
-
-    // let decrypted = decipher.update(encrypted);
-    // decrypted = Buffer.concat([decrypted, decipher.final()]);
-
-    // return decrypted.toString();
 }

@@ -25,8 +25,9 @@ export const createUser = async (
         set3: userInfo[2],
         set4: userInfo[3]
     }
-    console.log(params)
 
     const response = await got("/user/create", "POST", params)
-    console.log(response)
+    if(response === 1) {
+        alert("유저 생성이 완료됐습니다.")
+    } 
 }

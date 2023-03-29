@@ -13,7 +13,7 @@ export const signin = async (identity: string, password: string, rememberMe: boo
         rememberMe == true
         ? setCookie("rememberMe", identity)
         : deleteCookie("rememberMe")
-
+        setCookie("user", JSON.stringify(response.data))
         location.reload();
     } else {
         alert("회원 정보가 올바르지 않습니다")

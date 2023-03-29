@@ -1,0 +1,43 @@
+.search-form {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-bottom: 1rem;
+
+    .input-form {
+        display: flex;
+        align-items: center;
+        overflow: hidden;
+        border-radius: 4px;
+        margin-left: auto;
+
+        label {
+            color: var(--font-color-down);
+            min-width: fit-content;
+            margin-right: 0.725rem;
+        }
+
+        input {
+            padding: 0.3rem 1rem;
+            border-radius: 4px 0 0 4px;
+        }
+          
+        button {
+            background: #82868b;
+            border-radius: 0;
+            padding: 0.36rem 1rem;
+            font-size: 0.85rem;
+        }
+    }
+}
+  
+
+@media screen and (max-width: 480px) {
+    select {
+        width: 100%;
+        margin-bottom: 1rem;
+    }
+    .input-form {
+        width: 100%;
+    }
+}

@@ -15,5 +15,5 @@ export const userFormAdvenced = [
     {id: "set1", title: "추가설정 1", type: "text", placeholder: "추가설정 1을 입력하세요."},
     {id: "set2", title: "추가설정 2", type: "text", placeholder: "추가설정 2을 입력하세요."},
     {id: "set3", title: "추가설정 3", type: "number", placeholder: "추가설정 3을 입력하세요."},
-    {id: "set4", title: "추가설정 4", type: "number", placeholder: "추가설정 4을 입력하세요."},
+    {id: "meme", title: "메모", type: "text", placeholder: "입력하지 않으셔도 됩니다."},
 ]
