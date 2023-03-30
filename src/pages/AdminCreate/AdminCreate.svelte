@@ -4,7 +4,7 @@
     import AdvencedInfo from "components/AdminCreate/AdvencedInfo/AdvencedInfo.svelte";
     import FullInfo from "components/AdminCreate/FullInfo/FullInfo.svelte";
     import Footer from "components/AdminCreate/Footer/Footer.svelte";
-    import { createAdminLevel } from "constants/adminCreate";
+    import { adminFormBasic, createAdminLevel } from "constants/adminCreate";
 
     let identity: HTMLInputElement;
     let username: HTMLInputElement;
@@ -18,10 +18,26 @@
     const bindBasic = [identity, username, password, passwordConfirm];
     const bindAdvenced = [set1, set2, memo];
     const bindSelect: [number] = [adminAuth];
+    const validateElements = [identity, username, password, passwordConfirm];
     
     let page: number = 1;
 
     const paging = (value: number):void => {
+
+        if(value === 1 && page == 1){
+            for(let i = 0; i < bindBasic.length; i++){
+                if (!bindBasic[i]) {
+                    document.querySelector(`#${adminFormBasic[i]["id"]}`).classList.add("invalid");
+                    return validateElements[i].focus();
+                }
+            }
+
+            if(bindBasic[2] !== bindBasic[3]) {
+                document.querySelector(`#${adminFormBasic[3]["id"]}`).classList.add("invalid");
+                return validateElements[3].focus();
+            }
+        }
+
         if(value === 1) page++ ;    // next
         if(value === 0) page-- ;    // previous
     }
@@ -40,7 +56,7 @@
                 </p>
             </div>
             {#if page == 1}
-                <BasicInfo {bindBasic} />
+                <BasicInfo {bindBasic} {validateElements} />
             {:else if page == 2}
                 <AdvencedInfo {bindSelect} {bindAdvenced}/>
             {:else}
