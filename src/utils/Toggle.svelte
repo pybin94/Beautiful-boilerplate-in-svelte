@@ -5,7 +5,6 @@
 
     const handleToggle = (): void => {
         toggleStateus = !toggleStateus;
-        console.log(toggleStateus)
     }
 
     $: toggleStatus, toggleStatus === 1 ? toggleStateus = true : toggleStateus = false;

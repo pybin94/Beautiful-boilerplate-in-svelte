@@ -62,6 +62,7 @@
 
 :global(.invalid) {
   border-color: #ff4a4a !important;
+  transition: 0.3s border-color;
 }
 
 :global(input.invalid) {

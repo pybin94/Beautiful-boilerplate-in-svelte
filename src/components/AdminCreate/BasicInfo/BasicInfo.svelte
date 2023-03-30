@@ -3,6 +3,7 @@
     import { handleValidate } from "utils/validator";
 
     export let bindBasic: any;
+    export let validateElements: object;
 </script>
 
 <form class="create-admin">
@@ -11,6 +12,7 @@
             <label for={item.id}>{item.title}</label>
             <input 
                 id={item.id}
+                bind:this={validateElements[index]}
                 bind:value={bindBasic[index]}
                 on:keydown={(e)=>{handleValidate(e)}}
                 on:blur={(e)=>{handleValidate(e)}}

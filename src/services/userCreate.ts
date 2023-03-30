@@ -29,7 +29,7 @@ export const createUser = async (
     }
 
     const response = await got("/user/create", "POST", params)
-    alert("유저 생성이 완료됐습니다.")
+    alert(response.message)
     if(response.status === 1) {
         navigate("/admin/create", { replace: false });   
         currentUrl.set(window.location.pathname)

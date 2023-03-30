@@ -15,7 +15,6 @@
         currentUrl.set(window.location.pathname)
         menus.forEach(item => {
             if(item.url == $currentUrl) {
-            console.log(item.url == $currentUrl)
                 currentMenu.title = item.title;
                 currentMenu.subtitle = item.subTitle;
             }
@@ -54,8 +53,6 @@
             sidebarVisibleMobile = false;
         }
     })
-
-    $: console.log(currentUrl)
 
     onMount(()=>{
         handelContainer()

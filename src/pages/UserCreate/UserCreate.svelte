@@ -4,7 +4,7 @@
     import AdvencedInfo from "components/UserCreate/AdvencedInfo/AdvencedInfo.svelte";
     import FullInfo from "components/UserCreate/FullInfo/FullInfo.svelte";
     import Footer from "components/UserCreate/Footer/Footer.svelte";
-    import { createUserLevel } from "constants/userCreate";
+    import { createUserLevel, userFormBasic } from "constants/userCreate";
 
     let identity: HTMLInputElement;
     let username: HTMLInputElement;
@@ -16,11 +16,27 @@
     let set4: HTMLInputElement;
 
     const bindBasic = [identity, username, password, passwordConfirm];
+    const validateElements = [identity, username, password, passwordConfirm];
     const bindAdvenced = [set1, set2, set3, set4];
     
     let page: number = 1;
 
     const paging = (value: number):void => {
+
+        if(value === 1 && page == 1){
+            for(let i = 0; i < bindBasic.length; i++){
+                if (!bindBasic[i]) {
+                    document.querySelector(`#${userFormBasic[i]["id"]}`).classList.add("invalid");
+                    return validateElements[i].focus();
+                }
+            }
+
+            if(bindBasic[2] !== bindBasic[3]) {
+                document.querySelector(`#${userFormBasic[3]["id"]}`).classList.add("invalid");
+                return validateElements[3].focus();
+            }
+        }
+
         if(value === 1) page++ ;    // next
         if(value === 0) page-- ;    // previous
     }
@@ -39,7 +55,7 @@
                 </p>
             </div>
             {#if page == 1}
-                <BasicInfo {bindBasic} />
+                <BasicInfo {bindBasic} {validateElements}/>
             {:else if page == 2}
                 <AdvencedInfo {bindAdvenced}/>
             {:else}

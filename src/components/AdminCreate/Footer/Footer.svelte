@@ -1,6 +1,7 @@
 <script lang="ts">
     import { createAdminLevel } from "constants/adminCreate";
     import { createAdmin } from "services/adminCreate";
+
     export let page: number;
     export let paging: Function;
     export let bindBasic: Array<HTMLInputElement>;
