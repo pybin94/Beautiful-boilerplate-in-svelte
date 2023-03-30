@@ -1,3 +1,5 @@
+import { currentUrl } from './../stores/store';
+import { navigate } from 'svelte-routing';
 import { got } from './../utils/helpers';
 
 interface UserInfo {
@@ -27,7 +29,9 @@ export const createUser = async (
     }
 
     const response = await got("/user/create", "POST", params)
-    if(response === 1) {
-        alert("유저 생성이 완료됐습니다.")
-    } 
+    alert("유저 생성이 완료됐습니다.")
+    if(response.status === 1) {
+        navigate("/admin/create", { replace: false });   
+        currentUrl.set(window.location.pathname)
+    }
 }

@@ -1,15 +1,14 @@
 <script lang="ts">
-    import { adminAuthLevel } from "constants/adminCreate";
-    import { userFormAdvenced, userFormBasic } from "constants/userCreate";
+    import { adminAuthLevel } from "constants/adminList";
+    import { adminFormAdvenced, adminFormBasic } from "constants/adminCreate";
 
     export let bindBasic: object;
     export let bindAdvenced: object;
-    export let adminAuth: HTMLSelectElement;
-    // adminAuthLevel
-    console.log(adminAuth)
+    export let bindSelect: [number];
+
 </script>
 <form class="create-admin">
-    {#each userFormBasic as item, index}
+    {#each adminFormBasic as item, index}
         <div class="create-admin__form">
             <label for={item.id}>{item.title}</label>
             <input 
@@ -22,13 +21,18 @@
     {/each}
     <div class="create-admin__form">
         <label for="adminAuth">관리자 등급</label>
-        <input 
-            id="adminAuth"
-            bind:value={adminAuth}
-            disabled
-        >
+
+        {#each adminAuthLevel as item }
+            {#if item.auth == bindSelect[0]}
+                <input 
+                    id="adminAuth"
+                    bind:value={item.authName}
+                    disabled
+                >
+            {/if}
+        {/each}
     </div>
-    {#each userFormAdvenced as item, index}
+    {#each adminFormAdvenced as item, index}
         <div class="create-admin__form">
             <label for={item.id}>{item.title}</label>
             <input 

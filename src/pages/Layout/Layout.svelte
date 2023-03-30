@@ -3,19 +3,19 @@
     import Sidebar from "components/Layout/Sidebar/Sidebar.svelte";
     import Breadcrumb from "components/Layout/Breadcrumb/Breadcrumb.svelte";
     import Footer from 'components/Layout/Footer/Footer.svelte';
-    import { getCookie } from "utils/helpers";
     import { onMount } from "svelte";
     import { currentMenu, menus } from "constants/layout";
+    import { currentUrl } from "stores/store";
 
     let sidebarVisible: boolean = true;
     let sidebarVisibleMobile: boolean = false;
     let container: HTMLElement;
-    let userInfo = getCookie("auth")
 
-    const handleUrlParams = () => {
-        currentMenu.url = window.location.pathname
+    export const handleUrlParams = () => {
+        currentUrl.set(window.location.pathname)
         menus.forEach(item => {
-            if(item.url == currentMenu.url) {
+            if(item.url == $currentUrl) {
+            console.log(item.url == $currentUrl)
                 currentMenu.title = item.title;
                 currentMenu.subtitle = item.subTitle;
             }
@@ -55,6 +55,8 @@
         }
     })
 
+    $: console.log(currentUrl)
+
     onMount(()=>{
         handelContainer()
         handleUrlParams()
@@ -62,7 +64,7 @@
 
 </script>
 
-<Sidebar {toggleSidebar} {toggleSidebarMobile} {handleUrlParams} {sidebarVisible} {sidebarVisibleMobile} {currentMenu} />
+<Sidebar {toggleSidebar} {toggleSidebarMobile} {handleUrlParams} {sidebarVisible} {sidebarVisibleMobile} />
 <div class="container" bind:this={container}>
     <Header {sidebarVisible} {toggleSidebarMobile}/>
     <main class="app-content">

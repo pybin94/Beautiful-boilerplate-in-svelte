@@ -41,7 +41,6 @@
     }
 
     let adminInfo = JSON.parse(getCookie("user"))
-    console.log(adminInfo)
     
 </script>
 

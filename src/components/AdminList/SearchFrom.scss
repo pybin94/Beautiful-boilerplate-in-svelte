@@ -4,7 +4,15 @@
     align-items: center;
     margin-bottom: 1rem;
 
-    .input-form {
+    select {
+        margin-right: 4rem;
+    }
+
+    label {
+        margin-right: 0.76rem;
+    }
+
+    &__search {
         display: flex;
         align-items: center;
         overflow: hidden;
@@ -14,30 +22,39 @@
         label {
             color: var(--font-color-down);
             min-width: fit-content;
-            margin-right: 0.725rem;
         }
 
-        input {
-            padding: 0.3rem 1rem;
-            border-radius: 4px 0 0 4px;
-        }
-          
-        button {
-            background: #82868b;
-            border-radius: 0;
-            padding: 0.36rem 1rem;
-            font-size: 0.85rem;
+        &__wrap {
+            display: flex;
+
+            input {
+                padding: 0.3rem 1rem;
+                border-radius: 4px 0 0 4px;
+            }
+            
+            &__button {
+                // background: #82868b;
+                background: var(--main-color);
+                border-radius: 0 4px 4px 0;
+                padding: 0.36rem 1rem;
+                font-size: 0.85rem;
+            }
         }
     }
 }
   
-
 @media screen and (max-width: 480px) {
     select {
         width: 100%;
-        margin-bottom: 1rem;
+        margin: 0 0 1rem 0 !important;
     }
-    .input-form {
+
+    .search-form__search {
+        display: block;
         width: 100%;
+
+        &__wrap {
+            width: 100%;
+        }
     }
 }

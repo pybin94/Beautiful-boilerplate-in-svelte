@@ -1,17 +1,17 @@
 <script lang="ts">
-    import { adminAuthLevel, adminFormAdvenced  } from "constants/adminCreate";
+    import { adminFormAdvenced  } from "constants/adminCreate";
+    import { adminAuthLevel } from "constants/adminList";
     import { handleValidate } from "utils/validator";
 
     export let bindAdvenced: object;
-    export let adminAuth: HTMLSelectElement;
-
+    export let bindSelect: [number];
 </script>
 
 <form class="create-admin">
 
     <div class="create-admin__form">
         <label for="adminAuth">관리자 등급</label>
-        <select id="adminAuth" class="create-admin__form__select" bind:value={adminAuth}>
+        <select id="adminAuth" class="create-admin__form__select" bind:value={bindSelect[0]}>
             {#each adminAuthLevel as item}
                 <option value={item.auth}>{item.authName}</option>
             {/each}

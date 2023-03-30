@@ -1,7 +1,6 @@
 export interface CurrentMenu {
     title: string,
     subtitle: string,
-    url: string,
     slot: any,
 }
 
@@ -30,6 +29,5 @@ export const menus = [
 export let currentMenu: CurrentMenu = {
     title: "",
     subtitle: "",
-    url: "",
     slot: null,
 }

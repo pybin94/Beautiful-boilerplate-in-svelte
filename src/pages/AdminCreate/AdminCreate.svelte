@@ -13,10 +13,11 @@
     let set1: HTMLInputElement;
     let set2: HTMLInputElement;
     let memo: HTMLInputElement;
-    let adminAuth: HTMLSelectElement;
+    let adminAuth: number;
 
     const bindBasic = [identity, username, password, passwordConfirm];
     const bindAdvenced = [set1, set2, memo];
+    const bindSelect: [number] = [adminAuth];
     
     let page: number = 1;
 
@@ -41,13 +42,13 @@
             {#if page == 1}
                 <BasicInfo {bindBasic} />
             {:else if page == 2}
-                <AdvencedInfo {adminAuth} {bindAdvenced}/>
+                <AdvencedInfo {bindSelect} {bindAdvenced}/>
             {:else}
-                <FullInfo {adminAuth} {bindBasic} {bindAdvenced} />
+                <FullInfo {bindSelect} {bindBasic} {bindAdvenced} />
             {/if}
         </div>
         <div class="card__footer">
-            <Footer {page} {paging} {bindBasic} {adminAuth} {bindAdvenced} />
+            <Footer {page} {paging} {bindBasic} {bindSelect} {bindAdvenced} />
         </div>
     </div>
 </div>

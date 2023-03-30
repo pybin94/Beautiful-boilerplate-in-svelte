@@ -1,15 +1,14 @@
 <script lang="ts">
-    import type { CurrentMenu } from "constants/layout";
     import { onMount } from "svelte";
     import { link } from "svelte-routing"
     import { menus } from "constants/layout";
-    
+    import { currentUrl } from "stores/store";
+
     export let toggleSidebar: any;
     export let toggleSidebarMobile: any;
     export let handleUrlParams: any;
     export let sidebarVisible: boolean;
     export let sidebarVisibleMobile: boolean;
-    export let currentMenu: CurrentMenu;
 
     let sidebar: HTMLElement;
     let sidebarWrap: HTMLElement;
@@ -90,7 +89,7 @@
             {:else}
                 <li 
                     class="sidebar__menu__list {item.class} 
-                    {currentMenu.url == item.url 
+                    {$currentUrl == item.url 
                     ? (sidebarVisible == true ? "active" : "active hide") 
                     : (sidebarVisible == true ? "" : "hide")}"
                 >

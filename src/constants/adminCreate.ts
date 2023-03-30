@@ -16,9 +16,3 @@ export const adminFormAdvenced = [
     {id: "set2", title: "추가설정 2", type: "text", placeholder: "추가설정 2을 입력하세요."},
     {id: "memo", title: "메모", type: "text", placeholder: "입력하지 않으셔도 됩니다."},
 ]
-
-export const adminAuthLevel = [
-    {auth: 1, authName: "관리자A"},
-    {auth: 2, authName: "관리자B"},
-    {auth: 3, authName: "관리자C"},
-]
