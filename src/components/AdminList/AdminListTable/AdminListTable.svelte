@@ -1,6 +1,5 @@
 <script lang="ts">
     import { adminAuthLevel } from "constants/adminList";
-
     export let tableList: Array<object>;
     export let tableTitle: Array<string>;
     export let currentPage: number;
@@ -42,5 +41,5 @@
 </div>
 
 <style lang="scss">
-    @import "../styles/table.scss";
+    @import "../../../styles/table.scss";
 </style>

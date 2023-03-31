@@ -1,10 +1,10 @@
 <script lang="ts">
-    import SearchForm from "components/AdminList/SearchForm.svelte";
+    import SearchForm from "components/AdminList/SearchFrom/SearchForm.svelte";
+    import AdminListTable from "components/AdminList/AdminListTable/AdminListTable.svelte";
     import { adminTableTitle } from "constants/adminList";
     import { onMount } from "svelte";
     import { got } from "utils/helpers";
     import Pagenation from "utils/Pagenation.svelte";
-    import Table from "utils/Table.svelte";
     
     let currentPage: number = 1;
     let limit: number = 20;
@@ -52,7 +52,7 @@
 
 </script>
 <SearchForm {handleGetList} {searchFrom} />
-<Table {tableList} tableTitle={adminTableTitle} {currentPage} {limit} />
+<AdminListTable {tableList} tableTitle={adminTableTitle} {currentPage} {limit} />
 <Pagenation {handleGetList} {fullPage} {currentPage} />
 
 <style lang="scss">

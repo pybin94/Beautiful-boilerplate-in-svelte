@@ -1,9 +1,9 @@
 <script lang="ts">
     import { signout } from "services/sign";
     import { link } from "svelte-routing";
-
+    export let toggleSignModal: Function;
     const dorpDownMenus = [
-        {title: "설정 및 정보", link: "user/setting", icon: "fa-solid fa-screwdriver-wrench"},
+        {title: "설정 및 정보", link: "/user/list", icon: "fa-solid fa-screwdriver-wrench"},
     ];
 
 </script>
@@ -12,7 +12,10 @@
     <ul class="drop-down__menu">
         {#each dorpDownMenus as item}
         <li class="drop-down__menu__list">
-            <a href={item.link} use:link>
+            <a 
+                href={item.link} use:link
+                on:click={()=>{toggleSignModal()}}
+            >
                 <i class="{item.icon}"></i>
                 <span>{item.title}</span>
             </a>

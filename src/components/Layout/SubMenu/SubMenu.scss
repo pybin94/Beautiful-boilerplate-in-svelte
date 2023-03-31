@@ -1,0 +1,77 @@
+.sub-menu {
+    position: fixed;
+    z-index: 100;
+    right: 3%;
+    bottom: 4%;
+
+    &__button {
+        width: 3.5rem;
+        height: 3.5rem;
+        border-radius: 100%;
+        text-align: center;
+        line-height: 3.7rem;
+        font-size: 2rem;
+        color: var(--font-color);
+        cursor: pointer;
+    }
+
+    &__main-button {
+        position: absolute;
+        z-index: 200;
+        right: inherit;
+        bottom: inherit;
+        background: #06bee1;
+        box-shadow: var(--main-color-shadow);
+
+        i {
+            transform: rotate(135deg);
+            transition: transform 0.5s;
+        }
+    }
+
+    &__sub-button {
+        background: var(--fade-color);
+        position: absolute;
+        z-index: 100;
+        right: inherit;
+        bottom: inherit;
+        transition: all 0.5s;      
+
+        &:hover {
+            background: var(--main-color-gradient);
+            box-shadow: var(--main-color-shadow);
+        }
+
+    }
+
+    &__sub-button:first-child {
+        position: absolute;
+        background: var(--fade-color);
+        top: 10px;
+    }
+}
+
+:global(.sub-menu__main-button.active i) {
+    transform: rotate(0deg) !important;
+}
+
+:global(.sub-menu__sub-button.active:nth-child(2)) {
+    bottom: -10px;
+    right: 70px;
+}
+
+:global(.sub-menu__sub-button.active:nth-child(3)) {
+    bottom: 55px;
+    right: 45px;
+}
+
+:global(.sub-menu__sub-button.active:nth-child(4)) {
+    bottom: 65px;
+    right: -20px
+}
+
+@media screen and (max-width: 480px) {
+    .sub-menu {
+        right: 7%;
+    }
+}

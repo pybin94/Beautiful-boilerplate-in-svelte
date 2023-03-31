@@ -3,6 +3,7 @@
     import Sidebar from "components/Layout/Sidebar/Sidebar.svelte";
     import Breadcrumb from "components/Layout/Breadcrumb/Breadcrumb.svelte";
     import Footer from 'components/Layout/Footer/Footer.svelte';
+    import SubMenu from "components/Layout/SubMenu/SubMenu.svelte";
     import { onMount } from "svelte";
     import { currentMenu, menus } from "constants/layout";
     import { currentUrl } from "stores/store";
@@ -69,6 +70,7 @@
         <slot />
     </main>
     <Footer />
+    <SubMenu />
 </div>
 
 <style lang="scss">

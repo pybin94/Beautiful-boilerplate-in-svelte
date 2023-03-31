@@ -12,7 +12,8 @@
     let nightModeIcon: HTMLElement;
 
     const toggleSignModal = (): void => {
-        toggleUserModal === true ? toggleUserModal = false : toggleUserModal = true;
+        // toggleUserModal === true ? toggleUserModal = false : toggleUserModal = true;
+        toggleUserModal = !toggleUserModal
     }
 
     const handleNightMode = ():void => {
@@ -62,20 +63,14 @@
         <p>{adminInfo["name"]}</p>
         <p>{adminInfo["identity"]}</p>
     </div>
-    <img 
+    <i class="fa-solid fa-user header__profile-icon"
         on:click={toggleSignModal}
         on:keypress={toggleSignModal}
-        class="header__profile-icon" 
-        src="/src/assets/icon/profile.png" 
-        alt="프로필 이미지"
-    >
+    ></i>
     {#if toggleUserModal}
-        <DropDown />
+        <DropDown {toggleSignModal} />
     {/if}
 </header>
-{#if toggleUserModal}
-  <!-- <SignIn /> -->
-{/if}
 
 <style lang="scss">
     @import "./Header.scss";

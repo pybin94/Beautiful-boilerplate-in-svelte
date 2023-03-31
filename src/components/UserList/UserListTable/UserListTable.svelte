@@ -32,7 +32,7 @@
                         {/each}
                         <td>{item["set1"]}</td>
                         <td>{item["set2"]}</td>
-                        <td>{item["memo"]}</td>
+                        <td>{item["set3"]}</td>
                         <td>{item["created_at"]}</td>
                     </tr>
                 {/each}
@@ -42,5 +42,5 @@
 </div>
 
 <style lang="scss">
-    @import "../styles/table.scss";
+    @import "../../../styles/table.scss";
 </style>

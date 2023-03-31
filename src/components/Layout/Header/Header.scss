@@ -39,6 +39,10 @@
   &__profile-icon {
     width: 36px;
     height: 36px;
+    line-height: 36px;
+    text-align: center;
+    font-size: 1.3rem;
+    background: linear-gradient(180deg, #06bee1, #0678e1, rgb(19 54 166));
     margin-left: 10px;
     border-radius: 100%;
     cursor: pointer;
