@@ -5,12 +5,12 @@
     bottom: 4%;
 
     &__button {
-        width: 3.5rem;
-        height: 3.5rem;
+        width: 3rem;
+        height: 3rem;
         border-radius: 100%;
         text-align: center;
-        line-height: 3.7rem;
-        font-size: 2rem;
+        line-height: 3.2rem;
+        font-size: 1.5rem;
         color: var(--font-color);
         cursor: pointer;
     }
@@ -24,8 +24,8 @@
         box-shadow: var(--main-color-shadow);
 
         i {
-            transform: rotate(135deg);
-            transition: transform 0.5s;
+            transform: rotate(45deg);
+            transition: transform 0.3s;
         }
     }
 
@@ -35,13 +35,11 @@
         z-index: 100;
         right: inherit;
         bottom: inherit;
-        transition: all 0.5s;      
+        transition: all 0.3s;      
 
         &:hover {
-            background: var(--main-color-gradient);
             box-shadow: var(--main-color-shadow);
         }
-
     }
 
     &__sub-button:first-child {

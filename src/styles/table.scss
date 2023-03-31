@@ -13,24 +13,9 @@
             border-top: 1px solid var(--border-color);
         }
 
-        tr {
-            border-bottom: 1px solid var(--border-color);
-            cursor: pointer;
-        }
+       
           
-        tr:hover {
-            background-color: #242b3d !important;
-        }
-          
-        tr:nth-child(2n) {
-            background-color: var(--card);
-        }
-          
-        tr:nth-child(2n+1) {
-            background-color: #242b3d;
-        }
-          
-        th, td {
+        th{
             padding: 0.72rem 2rem;
         }
           
@@ -38,4 +23,25 @@
             background-color: #343d55;
         }
     }
+}
+
+:global(.table table td) {
+    padding: 0.72rem 2rem;
+}
+
+:global(.table table tr) {
+    border-bottom: 1px solid var(--border-color);
+    cursor: pointer;
+}
+  
+:global(.table table tr:hover) {
+    background-color: #242b3d !important;
+}
+  
+:global(.table table tr:nth-child(2n)) {
+    background-color: var(--card);
+}
+  
+:global(.table table tr:nth-child(2n+1)) {
+    background-color: #242b3d;
 }

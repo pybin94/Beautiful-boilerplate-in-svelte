@@ -1,14 +1,13 @@
 <script lang="ts">
     let subMenu: boolean = false;
-
     const handleSubMenu = () => {
         subMenu = !subMenu;
     };
 
     const subButtons = [
-        {event: handleSubMenu(), icon: "fa-brands fa-internet-explorer"}, 
-        {event: handleSubMenu(), icon: "fa-brands fa-docker"}, 
-        {event: handleSubMenu(), icon: "fa-brands fa-github"},
+        {event: "handleSubMenu()", icon: "fa-brands fa-internet-explorer"}, 
+        {event: "handleSubMenu()", icon: "fa-brands fa-docker"}, 
+        {event: "handleSubMenu()", icon: "fa-brands fa-github"},
     ]
 </script>
 

@@ -1,10 +1,13 @@
 <script lang="ts">
+    import UserDetailBody from "components/UserList/Modal/UserDetailBody.svelte";
+    import UserDetailFooter from "components/UserList/Modal/UserDetailFooter.svelte";
     import SearchForm from "components/UserList/SearchFrom/SearchForm.svelte";
     import UserListTable from "components/UserList/UserListTable/UserListTable.svelte";
     import { userTableTitle } from "constants/userList";
-    import { onMount } from "svelte";
     import { got } from "utils/helpers";
+    import Modal from "utils/Modal.svelte";
     import Pagenation from "utils/Pagenation.svelte";
+    import Table from "utils/Table.svelte";
 
     let currentPage: number = 1;
     let limit: number = 20;
@@ -12,12 +15,19 @@
     let tableList: Array<object>;
     let fullPage: number = 1;
     let offset: number = limit * currentPage-1;
+    let visible: boolean = false;
+    let tableIndex: number;
 
     const searchFrom: [number, string] = [limit, searchValue]
 
     const init = () => {
         handleGetList();
     };
+
+    const handleVisible = (index: number) => {
+        tableIndex = index
+        visible = !visible
+    }
 
     const handleGetList = async (setPage: number = 1) => {
 
@@ -49,9 +59,14 @@
 
 </script>
 <SearchForm {handleGetList} {searchFrom} />
-<UserListTable {tableList} tableTitle={userTableTitle} {currentPage} {limit} />
+<Table tableTitle={userTableTitle} >
+    <UserListTable {handleVisible} {tableList} {currentPage} {limit} />
+</Table>
 <Pagenation {handleGetList} {fullPage} {currentPage} />
-
+<Modal {visible} {handleVisible} title={"유저 상세정보"} >
+    <UserDetailBody {tableIndex} slot="body" />
+    <UserDetailFooter slot="footer" />
+</Modal>
 <style lang="scss">
     @import "./UserList.scss";
 </style>
