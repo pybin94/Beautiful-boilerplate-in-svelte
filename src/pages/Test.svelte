@@ -24,8 +24,10 @@
         if(response.ststue == 1) location.reload();
     }
 </script>
-<Toggle toggle={testToggle} {handleToggle}/>
+<div class="content">
+    <Toggle toggle={testToggle} {handleToggle}/>
 
-<button on:click={test}>
-    테스트
-</button>
+    <button on:click={test}>
+        테스트
+    </button>
+</div>

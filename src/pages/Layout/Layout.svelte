@@ -69,9 +69,9 @@
         <Breadcrumb {currentMenu}/>
         <slot />
     </main>
-    <Footer />
     <SubMenu />
 </div>
+<Footer {sidebarVisible}/>
 
 <style lang="scss">
     @import "./Layout.scss";

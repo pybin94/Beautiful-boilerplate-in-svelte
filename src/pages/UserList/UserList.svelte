@@ -4,6 +4,7 @@
     import SearchForm from "components/UserList/SearchFrom/SearchForm.svelte";
     import UserListTable from "components/UserList/UserListTable/UserListTable.svelte";
     import { userTableTitle } from "constants/userList";
+    import { fade, fly, scale } from "svelte/transition";
     import { got } from "utils/helpers";
     import Modal from "utils/Modal.svelte";
     import Pagenation from "utils/Pagenation.svelte";
@@ -58,15 +59,18 @@
     init();
 
 </script>
-<SearchForm {handleGetList} {searchFrom} />
-<Table tableTitle={userTableTitle} >
-    <UserListTable {handleVisible} {tableList} {currentPage} {limit} />
-</Table>
-<Pagenation {handleGetList} {fullPage} {currentPage} />
-<Modal {visible} {handleVisible} title={"유저 상세정보"} >
-    <UserDetailBody {tableIndex} slot="body" />
-    <UserDetailFooter slot="footer" />
-</Modal>
+<div class="content">
+    <SearchForm {handleGetList} {searchFrom} />
+    <Table tableTitle={userTableTitle} >
+        <UserListTable {handleVisible} {tableList} {currentPage} {limit} />
+    </Table>
+    <Pagenation {handleGetList} {fullPage} {currentPage} />
+    <Modal {visible} {handleVisible} title={"유저 상세정보"} >
+        <UserDetailBody {tableIndex} slot="body" />
+        <UserDetailFooter slot="footer" />
+    </Modal>
+</div>
 <style lang="scss">
+    
     @import "./UserList.scss";
 </style>

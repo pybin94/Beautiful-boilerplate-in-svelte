@@ -10,11 +10,18 @@
             <option value={item}>{item}</option>
         {/each}
     </select>
-    <div class="input-form">
+    <div class="search-form__search">
+        <label for="searchInput">검색어를 입력하세요.</label>
+        <div class="search-form__search__wrap">
+            <input id="searchInput" type="text" bind:value={searchFrom[1]}>
+            <button class="search-form__search__wrap__button">검색</button>
+        </div>
+    </div>
+    <!-- <div class="input-form">
         <label for="searchInput">어드민 아이디</label>
         <input id="searchInput" type="text" bind:value={searchFrom[1]}>
         <button>검색</button>
-    </div>
+    </div> -->
 </form>
 
 <style lang="scss">

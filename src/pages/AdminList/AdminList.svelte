@@ -64,16 +64,17 @@
     init()
 
 </script>
-
-<SearchForm {handleGetList} {searchFrom} />
-<Table tableTitle={adminTableTitle}>
-    <AdminListTable {tableList} {handleVisible} {currentPage} {limit} />
-</Table>
-<Pagenation {handleGetList} {fullPage} {currentPage} />
-<Modal {visible} {handleVisible} title={"관리자 상세정보"} >
-    <AdminDetailBody {tableIndex} slot="body" />
-    <AdminDetailFooter slot="footer" />
-</Modal>
+<div class="content">
+    <SearchForm {handleGetList} {searchFrom} />
+    <Table tableTitle={adminTableTitle}>
+        <AdminListTable {tableList} {handleVisible} {currentPage} {limit} />
+    </Table>
+    <Pagenation {handleGetList} {fullPage} {currentPage} />
+    <Modal {visible} {handleVisible} title={"관리자 상세정보"} >
+        <AdminDetailBody {tableIndex} slot="body" />
+        <AdminDetailFooter slot="footer" />
+    </Modal>
+</div>
 <style lang="scss">
     @import "./AdminList.scss";
 </style>

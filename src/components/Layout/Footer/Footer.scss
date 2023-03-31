@@ -1,7 +1,19 @@
 .footer {
-    padding: 2rem 2rem 0;
+    padding: 0.8rem 1.7rem;
+    margin-left: 235px;
+    transition: margin-left 0.3s;
 
     span {
         color: var(--main-color);
+    }
+}
+
+:global(.footer.hide) {
+    margin-left: 75px !important;
+}
+
+@media screen and (max-width: 1200px) {
+    .footer {
+        margin-left: 0 !important;
     }
 }

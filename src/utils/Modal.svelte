@@ -50,5 +50,6 @@
 </div>
 {/if}
 <style lang="scss">
+    @import "../styles/animation.scss";
     @import "../styles/modal.scss";
 </style>

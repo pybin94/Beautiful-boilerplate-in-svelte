@@ -24,7 +24,7 @@
         left: 50%;
         transform: translate(-50%, -50%);
         transition: all 0.5s;
-        animation: smooth 0.5s;
+        animation: smoothAppear 0.5s;
         border-radius: 5px;
         background: var(--card);
         box-shadow: -12px 12px 4px #090c14, 6px 23px 2px #576284;
@@ -75,24 +75,4 @@
 }
 :global(.modal__cover.inactive) {
     opacity: 0;
-}
-
-@keyframes smooth {
-    from {
-      opacity: 0;
-      transform: translate(-50%, -70%);
-    }
-    to {
-      opacity: 1;
-      transform: translate(-50%, -50%);
-    }
-}
-
-@keyframes fade {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
 }

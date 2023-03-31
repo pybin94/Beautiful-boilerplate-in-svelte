@@ -84,3 +84,16 @@ input[type="number"]::-webkit-inner-spin-button {
 textarea {
   resize: none;
 }
+
+.content {
+  animation: fade 0.5s;
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

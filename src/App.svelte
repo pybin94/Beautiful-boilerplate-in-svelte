@@ -10,11 +10,10 @@
   import Test from "pages/Test.svelte";
   import { getCookie } from "utils/helpers";
   import AdminCreate from "pages/AdminCreate/AdminCreate.svelte";
-
-  document.title = process.env.SITENAME
   
-  let hasCookie: boolean;
+  document.title = process.env.SITENAME
 
+  let hasCookie: boolean;
   getCookie("user") ? hasCookie = true : hasCookie = false;
 </script>
 

@@ -42,7 +42,7 @@
     }
 
 </script>
-<div class="create-user">
+<div class="content create-user">
     <div class="card create_user__form">
         <div class="card__header">
             <Header {page} />
