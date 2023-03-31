@@ -4,8 +4,6 @@
     export let tableTitle: Array<string>;
     export let currentPage: number;
     export let limit: number;
-
-    $: console.log(tableList)
 </script>
 
 <div class="table">

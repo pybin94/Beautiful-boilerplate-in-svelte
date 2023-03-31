@@ -57,3 +57,9 @@ export const setCookie = (cookieName: string, value: any, expires: number = 0): 
 export const deleteCookie = (cookieName: string): void => {
 	document.cookie = cookieName + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT; path=/';
 }
+
+export const now = () => {
+    const nowDate = new Date
+    const setTimeZone = new Date(nowDate.getTime() - (nowDate.getTimezoneOffset() * 60000)) // Asia/Seoul
+    return setTimeZone.toISOString().slice(0, 19).replace('T', ' ');
+}

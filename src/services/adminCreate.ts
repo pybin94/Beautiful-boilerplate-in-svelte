@@ -32,7 +32,7 @@ export const createAdmin = async (
     alert(response.message)
     
     if(response.status === 1) {
-        navigate("/admin/create", { replace: false });   
+        navigate("/admin/list", { replace: false });   
         currentUrl.set(window.location.pathname)
     }
 }

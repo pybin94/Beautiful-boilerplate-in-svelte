@@ -10,7 +10,6 @@
         {event: handleSubMenu(), icon: "fa-brands fa-docker"}, 
         {event: handleSubMenu(), icon: "fa-brands fa-github"},
     ]
-    $: console.log(subMenu)
 </script>
 
 <div class="sub-menu">
