@@ -1,9 +1,17 @@
 <script lang="ts">
     import { got } from "utils/helpers";
+    import Toggle from "utils/Toggle.svelte";
 
     let page = 2
     let limit = 1;
     let offset = limit * (page-1);
+    let testToggle: boolean = false;
+
+
+    const handleToggle = () => {
+        testToggle = !testToggle;
+    }
+
 
     const test = async () => {
         let params = {
@@ -16,6 +24,7 @@
         if(response.ststue == 1) location.reload();
     }
 </script>
+<Toggle toggle={testToggle} {handleToggle}/>
 
 <button on:click={test}>
     테스트

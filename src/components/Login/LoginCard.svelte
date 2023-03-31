@@ -2,6 +2,7 @@
     import { signin } from "services/sign";
     import { onMount } from "svelte";
     import { getCookie } from "utils/helpers";
+    import Toggle from "utils/Toggle.svelte";
     import { handleValidate } from "utils/validator";
 
     let identity: string;
@@ -9,14 +10,12 @@
     let password: HTMLInputElement;
     let eyeIcon: HTMLElement;
     let passwordWrap: HTMLElement;
-    let rememberMeLabel: HTMLElement;
 
     onMount(()=>{
         let rememberMeValue = getCookie("rememberMe");
         if ( rememberMeValue ) {
             rememberMe = true;
             identity = rememberMeValue
-            rememberMeLabel.classList.add("active");
         } else {
             rememberMe = false
         }
@@ -38,11 +37,7 @@
     }
 
     const checkRememberMe = (): void => {
-        rememberMeLabel.classList.toggle("active");
-
-        rememberMe == true
-        ? rememberMe = false
-        : rememberMe = true;
+        rememberMe = !rememberMe
     }
 
     const revealPassword = (): void => {
@@ -92,8 +87,8 @@
             ></i>
         </div>
         <div class="login__form__remember-me">
-            <input id="rememberMe" type="checkbox" on:click={checkRememberMe} >
-            <label for="rememberMe" bind:this={rememberMeLabel}>Remember Me</label>
+            <Toggle toggle={rememberMe} handleToggle={checkRememberMe}/>
+            <p>Remember Me</p>
         </div>
         <button type="submit">Log In</button>
     </form>
