@@ -1,12 +1,11 @@
 <script lang="ts">
-    import SearchForm from "components/AdminList/SearchForm.svelte";
+    import SearchForm from "components/AdminList/SearchFrom/SearchForm.svelte";
     import AdminListTable from "components/AdminList/AdminListTable/AdminListTable.svelte";
     import { adminTableTitle } from "constants/adminList";
     import { got } from "utils/helpers";
     import Pagenation from "utils/Pagenation.svelte";
     import Modal from "utils/Modal.svelte";
-    import AdminDetailBody from "components/AdminList/Modal/AdminDetailBody.svelte";
-    import AdminDetailFooter from "components/AdminList/Modal/AdminDetailFooter.svelte";
+    import AdminDetail from "components/AdminList/Modal/AdminDetail.svelte";;
     import Table from "utils/Table.svelte";;
     
     let currentPage: number = 1;
@@ -16,9 +15,8 @@
     let tableList: Array<object>;
     let authSort: number = null;
     let fullPage: number = 1;
-
     let visible: boolean = false;
-    let tableIndex: number;
+    let adminInfo: object;
 
     const searchFrom: [number, string, number] = [limit, searchValue, authSort]
 
@@ -26,8 +24,8 @@
         handleGetList()
     }
 
-    const handleVisible = (index: number) => {
-        tableIndex = index
+    const handleVisible = (selectIndex: object) => {
+        adminInfo = selectIndex
         visible = !visible
     }
 
@@ -64,6 +62,7 @@
     init()
 
 </script>
+
 <div class="content">
     <SearchForm {handleGetList} {searchFrom} />
     <Table tableTitle={adminTableTitle}>
@@ -71,10 +70,10 @@
     </Table>
     <Pagenation {handleGetList} {fullPage} {currentPage} />
     <Modal {visible} {handleVisible} title={"관리자 상세정보"} >
-        <AdminDetailBody {tableIndex} slot="body" />
-        <AdminDetailFooter slot="footer" />
+        <AdminDetail {adminInfo} {handleVisible} {handleGetList}/>
     </Modal>
 </div>
+
 <style lang="scss">
     @import "./AdminList.scss";
 </style>

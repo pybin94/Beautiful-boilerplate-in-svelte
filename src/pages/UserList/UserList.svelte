@@ -1,10 +1,8 @@
 <script lang="ts">
-    import UserDetailBody from "components/UserList/Modal/UserDetailBody.svelte";
-    import UserDetailFooter from "components/UserList/Modal/UserDetailFooter.svelte";
+    import UserDetail from "components/UserList/Modal/UserDetail.svelte";
     import SearchForm from "components/UserList/SearchFrom/SearchForm.svelte";
     import UserListTable from "components/UserList/UserListTable/UserListTable.svelte";
     import { userTableTitle } from "constants/userList";
-    import { fade, fly, scale } from "svelte/transition";
     import { got } from "utils/helpers";
     import Modal from "utils/Modal.svelte";
     import Pagenation from "utils/Pagenation.svelte";
@@ -66,8 +64,7 @@
     </Table>
     <Pagenation {handleGetList} {fullPage} {currentPage} />
     <Modal {visible} {handleVisible} title={"유저 상세정보"} >
-        <UserDetailBody {tableIndex} slot="body" />
-        <UserDetailFooter slot="footer" />
+        <UserDetail {tableIndex} />
     </Modal>
 </div>
 <style lang="scss">

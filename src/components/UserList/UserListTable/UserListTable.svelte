@@ -17,9 +17,10 @@
                     <td>{authItem["authName"]}</td>
                 {/if}
             {/each}
-            <td>{item["set1"]}</td>
-            <td>{item["set2"]}</td>
-            <td>{item["set3"]}</td>
+            <td>{item["set1"] ? item["set1"] : "-"}</td>
+            <td>{item["set2"] ? item["set2"] : "-"}</td>
+            <td>{item["set3"] ? item["set3"] : "-"}</td>
+            <td>{item["memo"] ? item["memo"] : "-"}</td>
             <td>{item["created_at"]}</td>
         </tr>
     {/each}

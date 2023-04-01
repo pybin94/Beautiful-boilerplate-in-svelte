@@ -1,11 +1,8 @@
 <script lang="ts">
-    import { onMount } from "svelte";
-    import { fade } from "svelte/transition";
-
     export let visible: boolean;
     export let handleVisible: Function;
     export let title: string;
-
+    
     let cover: HTMLDivElement;
     let contents: HTMLDivElement;
 
@@ -14,11 +11,10 @@
         contents.classList.add("inactive");
         setTimeout(()=>{
             if(visible){
-                handleVisible()
+                handleVisible();
             }
         }, 500);
     };
-
 </script>
 
 {#if visible}
@@ -34,21 +30,19 @@
         bind:this={contents}
     >   
         <div class="modal__contents__header">
-            {title}
+            <div class="modal__contents__header__title">{title}</div>
             <i class="fa-solid fa-xmark modal__contents__header__close"
                 on:click={handleInOutro}
                 on:keypress={handleInOutro}
             ></i>
         </div>
-        <div class="modal__contents__body">
-            <slot name="body"/>
-        </div>
-        <div class="modal__contents__footer">
-            <slot name="footer"/>
+        <div class="modal__contents__content">
+            <slot />
         </div>
     </div>
 </div>
 {/if}
+
 <style lang="scss">
     @import "../styles/animation.scss";
     @import "../styles/modal.scss";

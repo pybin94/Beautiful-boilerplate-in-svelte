@@ -10,7 +10,6 @@
   padding: 0.586rem 1.2rem;
   border-radius: 0.358rem;
   border: 1px solid transparent;
-  border-color: (--main-color);
   text-align: center;
   color: #fff;
   cursor: pointer;
@@ -18,7 +17,7 @@
 
 :global(input) {
   color: var(--font-color);
-  font-size: 1rem;
+  font-size: 0.85rem;
   padding: 0.538rem 1rem;
   background: var(--card);
   border: 1px solid;
@@ -27,32 +26,39 @@
   transition: 0.3s border ;
   width: 100%;
   transition: text-indent 0.3s;
-}
 
-:global(input:focus) {
-  transition: 0.3s border ;
-  border: 1px solid;
-  border-color: var(--main-color);
-}
+  &:focus {
+    transition: 0.3s border ;
+    border: 1px solid;
+    border-color: var(--main-color);
 
-:global(input:focus::-webkit-input-placeholder) {
-  text-indent: 5px;
-}
+    &:-webkit-input-placeholder {
+      text-indent: 5px;
+    }
+    &:-webkit-ms-input-placeholder {
+      text-indent: 5px;
+    }
+    &::-webkit-input-placeholder {
+      text-indent: 5px;
+    }
+    &::-webkit-ms-input-placeholder {
+      text-indent: 5px;
+    }
+  }
 
-:global(input:focus::-moz-placeholder) {
-  text-indent: 5px;
-}
+  &:focus-visible {
+    outline: none;
+  }
 
-:global(input:focus:-ms-input-placeholder) {
-  text-indent: 5px;
-}
+  &:disabled {
+    color: var(--font-color-down);
+  }
 
-:global(input:focus::-ms-input-placeholder) {
-  text-indent: 5px;
-}
-
-:global(input:focus-visible, select:focus-visible) {
-  outline: none;
+  &.invalid {
+    background: url(./assets/icon/error.svg) no-repeat;
+    background-position: right 10px center;
+    background-size: 1.125rem;
+  }
 }
 
 :global(label) {
@@ -63,12 +69,6 @@
 :global(.invalid) {
   border-color: #ff4a4a !important;
   transition: 0.3s border-color;
-}
-
-:global(input.invalid) {
-  background: url(./assets/icon/error.svg) no-repeat;
-  background-position: right 10px center;
-  background-size: 1.125rem;
 }
 
 :global(select) {
@@ -82,8 +82,12 @@
   background: var(--card) url(./assets/icon/select-arrow.svg) no-repeat;
   background-size: 0.6rem;
   background-position: right 8px center;
-}
 
-:global(select:focus) {
-  border-color: var(--main-color);
+  &:focus {
+    border-color: var(--main-color);
+  }
+
+  &:focus-visible {
+    outline: none;
+  }
 }

@@ -7,5 +7,5 @@
 </div>
 
 <style lang="scss">
-    @import "./UserDetailBody.scss";
+    @import "./UserDetail.scss";
 </style>
