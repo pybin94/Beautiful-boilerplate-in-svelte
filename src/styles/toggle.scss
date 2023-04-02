@@ -7,6 +7,7 @@
     border: 1px solid var(--border-color);
     cursor: pointer;
     overflow: hidden;
+    -webkit-box-shadow: inset 0 2px 0 #00000033;
     box-shadow: inset 0 2px 0 rgba(0,0,0,.2);
     transition: all 0.3s;
 
@@ -18,6 +19,7 @@
         height: 1.15em;
         padding: 0;
         background: #fff;
+        -webkit-box-shadow: 0 2px 0 rgba(0,0,0,.2);
         box-shadow: 0 2px 0 rgba(0,0,0,.2);
         border-radius: 20px;
         transition: left .3s;
@@ -26,8 +28,9 @@
 
 :global(.slider-toggle.active) {
     background: var(--light-color);
+
+    .slider-toggle__button {
+        left: 18px; 
+    }
 }
 
-:global(.slider-toggle__button.active) {
-    left: 18px; 
-}

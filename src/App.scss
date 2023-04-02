@@ -7,12 +7,36 @@
 :global(button) {
   min-width: fit-content;
   background: var(--main-color);
-  padding: 0.586rem 1.2rem;
+  padding: 0.486rem 1rem;
   border-radius: 0.358rem;
   border: 1px solid transparent;
   text-align: center;
-  color: #fff;
   cursor: pointer;
+  color: #fff;
+}
+
+:global(button.wide) {
+  width: 100%;
+}
+:global(button.red) {
+  background: var(--red);
+}
+:global(button.green) {
+  background: var(--green);
+}
+:global(button.blue) {
+  background: var(--blue);
+}
+:global(button.gray) {
+  background: var(--gray);
+}
+:global(button.fade) {
+  color: var(--main-color);
+  border-color: var(--main-color);
+}
+:global(button.line) {
+  background: unset;
+  border-color: var(--border-color);
 }
 
 :global(input) {

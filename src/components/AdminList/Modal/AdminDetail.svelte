@@ -1,6 +1,7 @@
 <script lang="ts">
     import { adminAuthLevel } from "constants/adminList";
     import { got } from "utils/helpers";
+    import { handleValidate } from "utils/validator";
 
     export let adminInfo: object;
     export let handleVisible: any;
@@ -9,6 +10,8 @@
     let set1: string = adminInfo["set1"];
     let set2: string = adminInfo["set2"];
     let memo: string = adminInfo["memo"];
+    let password: HTMLInputElement;
+    let passwordConfirm: HTMLInputElement;
 
     const updateAdminInfo = async () => {
         
@@ -18,12 +21,55 @@
             set2,
             memo
         }
+
         const response = await got(`/admin/update`, "PATCH", params)
-        console.log(response)
         alert(response.message)
         if (response.status == 1) {
-            handleVisible()
             handleGetList()
+            handleVisible()
+        }
+    }
+
+    const updateAdminPassword = async () => {
+
+        if(!password.value) {
+            password.classList.add("invalid");
+            return password.focus();
+        }
+
+        if(!passwordConfirm.value || password.value !== passwordConfirm.value) {
+            passwordConfirm.classList.add("invalid");
+            return passwordConfirm.focus();
+        }
+
+        let params = {
+            id: adminInfo["id"],
+            password: password.value,
+            passwordConfirm: passwordConfirm.value,
+        }
+        const response = await got(`/admin/password`, "PATCH", params)
+        alert(response.message)
+        if (response.status == 1) {
+            handleGetList()
+            handleVisible()
+        }
+    }
+
+    const deleteAdmin = async () => {
+        const confirmDialog = confirm("정말 삭제하시겠습니까?");
+        if(!confirmDialog) {
+            return;
+        }
+
+        let params = {
+            id: adminInfo["id"]
+        }
+
+        const response = await got(`/admin/delete`, "DELETE", params)
+        alert(response.message)
+        if (response.status == 1) {
+            handleGetList();
+            handleVisible();
         }
     }
 </script>
@@ -48,6 +94,33 @@
         </div>
         <div class="form-group-half">
             <div>
+                <label for="">새 비밀번호</label>
+                <input 
+                    type="password" 
+                    bind:this={password}
+                    on:keydown={(e)=>{handleValidate(e)}}
+                    on:blur={(e)=>{handleValidate(e)}}
+                >
+            </div>
+            <div>
+                <label for="">비밀번호 확인</label>
+                <input 
+                    type="password" 
+                    bind:this={passwordConfirm}
+                    on:keydown={(e)=>{handleValidate(e)}}
+                    on:blur={(e)=>{handleValidate(e)}}
+                >
+            </div>
+        </div>
+        <div class="form-group">
+            <button 
+                type="button" 
+                class="wide"
+                on:click={updateAdminPassword}
+            >비밀번호 변경</button>
+        </div>
+        <div class="form-group-half">
+            <div>
                 <label for="">추가설정1</label>
                 <input type="text" bind:value={set1}>
             </div>
@@ -60,6 +133,12 @@
             <label for="">메모</label>
             <input type="text" bind:value={memo}>
         </div>
+        <button 
+            type="button" 
+            class="wide red"
+            on:click={deleteAdmin}
+        >삭제
+        </button>
     </div>
     <div class="form-footer">
         <button class="admin-info-save">저장</button>

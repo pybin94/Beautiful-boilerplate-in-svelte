@@ -1,7 +1,4 @@
 <script lang="ts">
-    import { link } from 'svelte-routing';
-
-    let toggleStatus: number = 0;
 
 </script>
 <div class="content">

@@ -1,39 +1,59 @@
 <script lang="ts">
+    export let title: string; 
     export let visible: boolean;
     export let handleVisible: Function;
-    export let title: string;
-    
-    let cover: HTMLDivElement;
-    let contents: HTMLDivElement;
 
-    const handleInOutro = (): void => {
-        cover.classList.add("inactive");
-        contents.classList.add("inactive");
-        setTimeout(()=>{
-            if(visible){
-                handleVisible();
-            }
-        }, 500);
+    let animation: boolean;
+    let showModal: boolean = false;
+
+    const handleIntro = (): void => {
+        animation = true
+        showModal = true
     };
+
+    const handleOutro = (): void => {
+        if(showModal == true) {
+            animation = false
+            setTimeout(()=>{
+                showModal = false
+                handleVisible();
+            }, 300);
+        }
+    };
+
+    const handleShowModalOutro = (): void => {
+        if(showModal == true) {
+            animation = false
+            setTimeout(()=>{
+                showModal = false
+            }, 300);
+        }
+    };
+
+    $: if(visible === true){
+        handleIntro()
+    } else if (visible === false) {
+        handleShowModalOutro()
+    }
+
+    
 </script>
 
-{#if visible}
+{#if showModal}
 <div class="modal">
     <div
-        class="modal__cover"
-        bind:this={cover}
-        on:click={handleInOutro}
-        on:keypress={handleInOutro}
+        class="modal__cover {animation === false ? "inactive" : ""}"
+        on:click={handleOutro}
+        on:keypress={handleOutro}
     ></div>
     <div 
-        class="modal__contents"
-        bind:this={contents}
+        class="modal__contents {animation === false ? "inactive" : ""}"
     >   
         <div class="modal__contents__header">
             <div class="modal__contents__header__title">{title}</div>
             <i class="fa-solid fa-xmark modal__contents__header__close"
-                on:click={handleInOutro}
-                on:keypress={handleInOutro}
+                on:click={handleOutro}
+                on:keypress={handleOutro}
             ></i>
         </div>
         <div class="modal__contents__content">

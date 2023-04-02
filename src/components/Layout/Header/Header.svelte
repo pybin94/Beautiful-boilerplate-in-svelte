@@ -1,39 +1,28 @@
 <script lang="ts">
     import DropDown from "./Modal/DropDown.svelte";
-    import { onMount } from "svelte";
     import { nightMode } from "stores/store";
     import { getCookie } from "utils/helpers";
+    import Modal from "utils/Modal.svelte";
+    import Settings from "./Modal/Settings.svelte";
 
     export let sidebarVisible: boolean;
     export let toggleSidebarMobile: any;
-
+    
     let toggleUserModal: boolean = false;
+    let settingsVisible: boolean = false;
     let header: HTMLElement;
-    let nightModeIcon: HTMLElement;
+
+    const handleSettingsVisible = () => {
+        settingsVisible = !settingsVisible
+    }
 
     const toggleSignModal = (): void => {
-        // toggleUserModal === true ? toggleUserModal = false : toggleUserModal = true;
         toggleUserModal = !toggleUserModal
     }
 
     const handleNightMode = ():void => {
         nightMode.update((value) => !value)
-        toggleNightMode()
     }
-
-    const toggleNightMode = (): void => {
-        if($nightMode == false) {
-            nightModeIcon.classList.remove("fa-regular", "fa-sun");
-            nightModeIcon.classList.add("fa-solid", "fa-moon");
-        } else {
-            nightModeIcon.classList.remove("fa-solid", "fa-moon");
-            nightModeIcon.classList.add("fa-regular", "fa-sun");
-        }
-    }
-
-    onMount(()=>{
-        toggleNightMode()
-    })
 
     $: if(header){
         sidebarVisible == true
@@ -52,12 +41,13 @@
             on:click={toggleSidebarMobile}
             on:keypress={toggleSidebarMobile} 
         ></i>
-        <i 
-            bind:this={nightModeIcon} 
-            on:click={handleNightMode} 
+        <div 
+            class="night-mode {$nightMode == true ? "active" : ""}"
+            on:click={handleNightMode}
             on:keypress={handleNightMode} 
-            class="fa-regular fa-sun"
-        ></i>
+        >
+            <div class="night-mode__button"></div>
+        </div>
     </div>
     <div class="header__sign">
         <p>{adminInfo["name"]}</p>
@@ -68,9 +58,11 @@
         on:keypress={toggleSignModal}
     ></i>
     {#if toggleUserModal}
-        <DropDown {toggleSignModal} />
+        <DropDown {toggleSignModal} {handleSettingsVisible}/>
     {/if}
 </header>
+
+<Modal visible={settingsVisible} handleVisible={handleSettingsVisible} title={"설정 및 정보"}><Settings {handleSettingsVisible} /></Modal>
 
 <style lang="scss">
     @import "./Header.scss";

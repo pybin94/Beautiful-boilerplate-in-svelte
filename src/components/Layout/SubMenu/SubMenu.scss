@@ -15,7 +15,7 @@
         cursor: pointer;
     }
 
-    &__main-button {
+    &__main-button {   
         position: absolute;
         z-index: 200;
         right: inherit;
@@ -54,6 +54,9 @@
     i {
         transform: rotate(0deg) !important;
     }
+}
+
+:global(.sub-menu__sub-button.active) {
 
     &:nth-child(2) {
         bottom: -10px;

@@ -11,7 +11,8 @@
     let sidebarVisible: boolean = true;
     let sidebarVisibleMobile: boolean = false;
     let container: HTMLElement;
-
+    let visible: boolean;
+    
     export const handleUrlParams = () => {
         currentUrl.set(window.location.pathname)
         menus.forEach(item => {
@@ -25,14 +26,14 @@
 
     const toggleSidebar = () => {
         sidebarVisible = !sidebarVisible;
-        handelContainer();
+        handleContainer();
     };
 
     const toggleSidebarMobile = () => {
         sidebarVisibleMobile = !sidebarVisibleMobile;
     };
 
-    const handelContainer = () => {
+    const handleContainer = () => {
         if(!sidebarVisible) {
             container.classList.add("wide")
         } else {
@@ -56,7 +57,7 @@
     })
 
     onMount(()=>{
-        handelContainer()
+        handleContainer()
         handleUrlParams()
     });
 
@@ -72,7 +73,6 @@
     <SubMenu />
 </div>
 <Footer {sidebarVisible}/>
-
 <style lang="scss">
     @import "./Layout.scss";
 </style>

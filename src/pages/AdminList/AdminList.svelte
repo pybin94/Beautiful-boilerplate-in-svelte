@@ -24,14 +24,15 @@
         handleGetList()
     }
 
-    const handleVisible = (selectIndex: object) => {
-        adminInfo = selectIndex
+    const handleVisible = (selectIndex?: object) => {
+        if(selectIndex) adminInfo = selectIndex;
         visible = !visible
     }
 
-    const handleGetList = async (setPage: number = 1) => {
+    const handleGetList = async (setPage?: number) => {
 
-        currentPage = setPage;
+        if(setPage) currentPage = setPage;
+
         limit = searchFrom[0]
         offset = limit * (currentPage-1);
 
@@ -70,7 +71,7 @@
     </Table>
     <Pagenation {handleGetList} {fullPage} {currentPage} />
     <Modal {visible} {handleVisible} title={"관리자 상세정보"} >
-        <AdminDetail {adminInfo} {handleVisible} {handleGetList}/>
+        <AdminDetail {handleVisible} {adminInfo} {handleGetList}/>
     </Modal>
 </div>
 

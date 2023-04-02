@@ -8,7 +8,7 @@
 
 {#if tableList}
     {#each tableList as item, index}
-        <tr on:click={()=>{handleVisible(item["id"])}}>
+        <tr on:click={()=>{handleVisible(item)}}>
             <td>{index+((currentPage-1)*limit)}</td>
             <td>{item["identity"]}</td>
             <td>{item["user_name"]}</td>

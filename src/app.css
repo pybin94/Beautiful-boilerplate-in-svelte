@@ -14,6 +14,10 @@
   --font-color-dark: #a2a5ab;
   --border-color: #404656;
   --background: #161d31;
+  --red: #e71f1f;
+  --blue: #3055eb;
+  --grey: #82868b;
+  --green: #1ed624;
 }
 
 ::-webkit-scrollbar {

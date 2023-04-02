@@ -15,7 +15,7 @@
     let fullPage: number = 1;
     let offset: number = limit * currentPage-1;
     let visible: boolean = false;
-    let tableIndex: number;
+    let userInfo: object;
 
     const searchFrom: [number, string] = [limit, searchValue]
 
@@ -23,14 +23,15 @@
         handleGetList();
     };
 
-    const handleVisible = (index: number) => {
-        tableIndex = index
+    const handleVisible = (selectIndex?: object) => {
+        if(selectIndex) userInfo = selectIndex;
         visible = !visible
     }
 
-    const handleGetList = async (setPage: number = 1) => {
+    const handleGetList = async (setPage?: number) => {
 
-        currentPage = setPage;
+        if(setPage) currentPage = setPage;
+
         limit = searchFrom[0];
         offset = limit * (currentPage-1);
 
@@ -64,7 +65,7 @@
     </Table>
     <Pagenation {handleGetList} {fullPage} {currentPage} />
     <Modal {visible} {handleVisible} title={"유저 상세정보"} >
-        <UserDetail {tableIndex} />
+        <UserDetail {handleVisible} {userInfo} {handleGetList}/>
     </Modal>
 </div>
 <style lang="scss">

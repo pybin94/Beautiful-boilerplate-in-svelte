@@ -9,7 +9,7 @@
         on:click={handleToggle}
         on:keypress={handleToggle}
     >
-        <div class="slider-toggle__button {toggle === true ? "active" : ""}"></div>
+        <div class="slider-toggle__button"></div>
     </div>
 <style lang="scss">
    @import "../styles/toggle.scss";
