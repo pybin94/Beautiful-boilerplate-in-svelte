@@ -31,9 +31,9 @@
 
 :global(.create-user-header__level__box.active) {
     background: var(--dark-color) !important;
-    color: #fff !important;
+    color: var(--font-color-light) !important;
 }
 
 :global(.create-user-header__level__title.active) {
-    color: #fff;
+    color:  var(--font-color-light);
 }

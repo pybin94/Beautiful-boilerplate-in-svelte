@@ -14,6 +14,7 @@
 
     const handleSettingsVisible = () => {
         settingsVisible = !settingsVisible
+
     }
 
     const toggleSignModal = (): void => {
@@ -22,6 +23,13 @@
 
     const handleNightMode = ():void => {
         nightMode.update((value) => !value)
+        console.log($nightMode)
+        if($nightMode) {
+            document.body.classList.remove('night');
+        } else {
+            document.body.classList.add('night');
+        }
+
     }
 
     $: if(header){
@@ -42,7 +50,7 @@
             on:keypress={toggleSidebarMobile} 
         ></i>
         <div 
-            class="night-mode {$nightMode == true ? "active" : ""}"
+            class="night-mode {$nightMode == true ? "" : "active"}"
             on:click={handleNightMode}
             on:keypress={handleNightMode} 
         >
@@ -62,7 +70,7 @@
     {/if}
 </header>
 
-<Modal visible={settingsVisible} handleVisible={handleSettingsVisible} title={"설정 및 정보"}><Settings {handleSettingsVisible} /></Modal>
+<Modal visible={settingsVisible} handleVisible={handleSettingsVisible} title={"설정 및 정보"}><Settings handleVisible={handleSettingsVisible} /></Modal>
 
 <style lang="scss">
     @import "./Header.scss";

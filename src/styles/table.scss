@@ -19,7 +19,7 @@
         }
           
         th {
-            background-color: #343d55;
+            background-color: var(--table-header);
         }
     }
 }
@@ -34,7 +34,7 @@
 }
   
 :global(.table table tr:hover) {
-    background-color: #242b3d !important;
+    background-color: var(--table-color) !important;
 }
   
 :global(.table table tr:nth-child(2n)) {
@@ -42,5 +42,5 @@
 }
   
 :global(.table table tr:nth-child(2n+1)) {
-    background-color: #242b3d;
+    background-color: var(--table-color);
 }

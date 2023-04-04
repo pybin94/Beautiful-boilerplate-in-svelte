@@ -9,15 +9,39 @@
   --fade-color: #06bee11f;
   --main-color-gradient: linear-gradient(118deg,#06bee1,#06bee1b3);
   --main-color-shadow: 0 0 10px 1px rgb(6 190 225 / 70%);
+  --font-color-light: #fff;
   --font-color: #d0d2d6;
   --font-color-down: #b4b7bd;
   --font-color-dark: #a2a5ab;
+  --table-header: #343d55;
+  --table-color: #242b3d;
   --border-color: #404656;
   --background: #161d31;
   --red: #e71f1f;
   --blue: #3055eb;
   --grey: #82868b;
   --green: #1ed624;
+}
+
+.night {
+  --url-sprite: '../img/';
+  --font-size: 0.875rem;
+  --card: #ffffff;
+  --card-shadow: 0 4px 25px 0 rgb(180 183 189 / 10%);
+  --main-color: #06bee1;
+  --light-color: #0e9dbd;
+  --dark-color: #08bee1;
+  --fade-color: #11b2d091;
+  --main-color-gradient: linear-gradient(118deg,#06bee1,#06bee1b3);
+  --main-color-shadow: 0 0 10px 1px rgb(6 190 225 / 70%);
+  --font-color-light: #191919;
+  --font-color: #5e5873;
+  --font-color-down: #6e6b7b;
+  --font-color-dark: #7a6c6c;
+  --table-header: #bfe2ef;
+  --table-color: #e3e5ea;
+  --border-color: #c9c9c9;
+  --background: #e3e5ea;
 }
 
 ::-webkit-scrollbar {
@@ -60,7 +84,7 @@ body {
   padding: 0;
   letter-spacing: .01rem;
   font-size: var(--font-size);
-  color:#d0d2d6;
+  color: var(--font-color);
 }
 
 h1, h2, h3, h4, h5, h6, p {

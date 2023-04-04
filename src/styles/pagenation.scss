@@ -17,13 +17,13 @@
 
     
             &.active a {
-                color: #fff;    
+                color:  var(--font-color-light);    
                 border-radius: 50%;
                 background: var(--main-color);
             }
               
             &.active a {
-                color: #fff !important;
+                color:  var(--font-color-light) !important;
             }
             
             &.shift a{
