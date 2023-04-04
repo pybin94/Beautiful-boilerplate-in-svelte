@@ -1,58 +1,76 @@
-interface Popup {
-    description: string;
-    status: number;
+interface PopupOptions {
+    icon: string;
+    title: string;
+    color: string
 }
 
-export const popup = (popup: Popup): void  => {
-    let element: HTMLElement = document.createElement('div');
-    element.setAttribute("class", "popup");
-    document.querySelector("#app").appendChild(element)
-    document.querySelector(".popup").innerHTML = popupContent({status: popup.status, description: popup.description});
-}
+const options: Array<PopupOptions> = [
+    {icon: "xmark", title: "실패", color: "fail"},
+    {icon: "check", title: "성공", color: "success"},
+    {icon: "question", title: "확인", color: "confirm"},
+    {icon: "exclamation", title: "경고", color: "danger"},
+]
 
-export const popupClose = (setButton: boolean = false): string | void => {
-    if( setButton === true ) return `document.querySelectorAll('.popup')[ document.querySelectorAll('.popup').length-1].remove();`
-    const popup: NodeListOf<Element> = document.querySelectorAll('.popup');
-    popup[ popup.length-1 ].remove();
+export const popup = async (status?: number, description?: string, callback?: any)  => {
+    let popupElement: HTMLElement = document.createElement('div');
+    popupElement.setAttribute("class", "popup bounce");
+    document.querySelector("#app").appendChild(popupElement)
+
+    let coverElement: HTMLElement = document.createElement('div');
+    coverElement.setAttribute("class", "popup-cover fade");
+    document.querySelector("#app").appendChild(coverElement)
     
+    let popup = document.querySelectorAll(".popup")
+    let popupCover = document.querySelectorAll(".popup-cover")
+    popup[popup.length-1].innerHTML = popupContent(status, description);
+    requestAnimationFrame(() => {
+        popup[popup.length-1].classList.remove("bounce")
+        popupCover[popupCover.length-1].classList.remove("fade")
+    })
+    document.querySelectorAll("#popupClose")[document.querySelectorAll("#popupClose").length - 1].addEventListener("click", () => {
+        popupClose(false)
+        callback(false)
+    })
+    document.querySelectorAll("#popupConfirm")[document.querySelectorAll("#popupConfirm").length - 1]?.addEventListener("click", () => {
+        popupClose(true)
+        callback(true)
+    })
 }
 
-const popupContent = (popup: Popup): string => {
-    
-    let popupImg: string = `<i class="fa-solid fa-circle-check"></i>`;
-    let title: string = "완료"
-    let color: string = "popup-success";
-    let contents: string = `
-        <div class="popup__cover"></div>
-        <div class="popup__box">
-            <div class="popup__box__image ${color}">${popupImg}</div>
-            <div class="popup__box__title ${color}">${title}</div>
-            <div class="popup__box__description">${popup.description}</div>
-            <button type="button" onclick="${popupClose(true)}">확인</button>
-        </div>
-    `;
-
-    if (popup.status === 0) {
-        popupImg = `<i class="fa-solid fa-circle-exclamation"></i>`
-        title = "오류"
-        color = "popup-fail";
-
-    } else if (popup.status === 2) {
-        popupImg = `<i class="fa-solid fa-circle-question"></i>`
-        title = "확인"
-        color = "popup-confirm";
-        contents = `
-            <div class="popup__box">
-                <div class="popup__box__image ${color}">${popupImg}</div>
-                <div class="popup__box__title ${color}">${title}</div>
-                <div class="popup__box__description">${popup.description}</div>
-                <div class="popup__box__button">      
-                    <button type="button" onclick="${popupClose(true)}">취소</button>
-                    <button type="button" onclick="${popupClose(true)}">확인</button>
-                </div>
-            </div>
-        `
+export const popupClose = (isConfirm: boolean = false): string | void => {
+    let popup = document.querySelectorAll(".popup")
+    let popupCover = document.querySelectorAll(".popup-cover")
+    if(isConfirm == false){
+        popup[popup.length-1].classList.add("bounce")
+        popupCover[popupCover.length-1].classList.add("fade")
+        setTimeout(() => {
+            popupCover[popupCover.length-1].remove();
+            popup[popup.length-1].remove();
+        }, 200)
+    } else {
+        popupCover[popupCover.length-1].remove();
+        popup[popup.length-1].remove();
     }
 
+}
+
+const popupContent = (status?: number, description?: string): string => {
+    if(!status) status = 1;
+    if (!description) description = "";
+    
+    let contents: string = `
+        <div class="popup__border-top ${options[status]["color"]}"></div>
+        <div class="popup__icon ${options[status]["color"]}">
+            <i class="fa-solid fa-circle-${options[status]["icon"]}"></i>
+        </div>
+        <div class="popup__title">${options[status]["title"]}</div>
+        <div class="popup__description">${description}</div>
+        <div class="popup__button ${status <= 1 ? "center" : ""}">
+            ${ status <= 1 
+                ? `<button type="button" id="popupClose">확인</button>` 
+                : `<button type='button' id="popupClose" class="red">취소</button><button type='button' id="popupConfirm">확인</button>`
+            }  
+        </div>
+    `
     return contents
 }

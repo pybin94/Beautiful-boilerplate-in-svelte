@@ -19,7 +19,10 @@ export const got = async (urlParams: string = "", method: string = "GET", setPar
         const response = await fetch(api, options);
         const res = await response.json();
         
-        if(res.statusCode === 403 || res.status === -1) {
+        if(res.status === -1) {
+            window.location.href = "/";
+            return false;
+        } else if (res.status === -2) {
             deleteCookie("auth")
             window.location.href = "/";
             return false;

@@ -1,6 +1,7 @@
 import { currentUrl } from './../stores/store';
 import { navigate } from 'svelte-routing';
 import { got } from './../utils/helpers';
+import { popup } from 'utils/popup';
 
 interface UserInfo {
     identity: string;
@@ -29,7 +30,7 @@ export const createUser = async (
     }
 
     const response = await got("/user/create", "POST", params)
-    alert(response.message)
+    popup(response.status, response.message)
     if(response.status === 1) {
         navigate("/user/list", { replace: false });   
         currentUrl.set(window.location.pathname)

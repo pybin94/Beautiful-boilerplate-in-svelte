@@ -1,6 +1,7 @@
 <script lang="ts">
     import { adminAuthLevel } from "constants/adminList";
     import { got } from "utils/helpers";
+    import { popup } from "utils/popup";
     import { handleValidate } from "utils/validator";
 
     export let adminInfo: object;
@@ -23,7 +24,7 @@
         }
 
         const response = await got(`/admin/update`, "PATCH", params)
-        alert(response.message)
+        popup(response.status, response.message)
         if (response.status == 1) {
             handleGetList()
             handleVisible()
@@ -48,29 +49,28 @@
             passwordConfirm: passwordConfirm.value,
         }
         const response = await got(`/admin/password`, "PATCH", params)
-        alert(response.message)
+        popup(response.status, response.message)
         if (response.status == 1) {
             handleGetList()
             handleVisible()
         }
     }
 
-    const deleteAdmin = async () => {
-        const confirmDialog = confirm("정말 삭제하시겠습니까?");
-        if(!confirmDialog) {
-            return;
-        }
+    const deleteAdmin = () => {
+        popup(3, "정말 삭제하시겠습니까?", async (data: boolean) => {
+            if(data === false) return; 
+       
+            let params = {
+                id: adminInfo["id"]
+            }
 
-        let params = {
-            id: adminInfo["id"]
-        }
-
-        const response = await got(`/admin/delete`, "DELETE", params)
-        alert(response.message)
-        if (response.status == 1) {
-            handleGetList();
-            handleVisible();
-        }
+            const response = await got(`/admin/delete`, "DELETE", params)
+            popup(response.status, response.message)
+            if (response.status == 1) {
+                handleGetList();
+                handleVisible();
+            }
+        });
     }
 </script>
 
@@ -115,7 +115,7 @@
         <div class="form-group">
             <button 
                 type="button" 
-                class="wide"
+                class="wide line"
                 on:click={updateAdminPassword}
             >비밀번호 변경</button>
         </div>

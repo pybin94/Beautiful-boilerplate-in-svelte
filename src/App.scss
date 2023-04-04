@@ -30,11 +30,12 @@
 :global(button.gray) {
   background: var(--gray);
 }
-:global(button.fade) {
+:global(button.line) {
   color: var(--main-color);
   border-color: var(--main-color);
+  background: unset;
 }
-:global(button.line) {
+:global(button.fade) {
   background: unset;
   border-color: var(--border-color);
 }

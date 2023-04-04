@@ -37,4 +37,5 @@
 
 <style lang="scss">
   @import "./App.scss";
+  @import "./styles/popup.scss";
 </style>

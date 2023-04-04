@@ -11,7 +11,6 @@
     let sidebarVisible: boolean = true;
     let sidebarVisibleMobile: boolean = false;
     let container: HTMLElement;
-    let visible: boolean;
     
     export const handleUrlParams = () => {
         currentUrl.set(window.location.pathname)

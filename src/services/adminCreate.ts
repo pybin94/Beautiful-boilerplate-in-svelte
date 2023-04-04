@@ -1,6 +1,7 @@
 import { currentUrl } from './../stores/store';
 import { navigate } from 'svelte-routing';
 import { got } from '../utils/helpers';
+import { popup } from 'utils/popup';
 
 interface AdminInfo {
     identity: string;
@@ -29,7 +30,7 @@ export const createAdmin = async (
     }
 
     const response = await got("/admin/create", "POST", params)
-    alert(response.message)
+    popup(response.status, response.message)
     
     if(response.status === 1) {
         navigate("/admin/list", { replace: false });   

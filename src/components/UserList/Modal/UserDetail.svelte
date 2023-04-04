@@ -1,5 +1,6 @@
 <script lang="ts">
     import { got } from "utils/helpers";
+    import { popup } from "utils/popup";
     import { handleValidate } from "utils/validator";
 
     export let userInfo: object;
@@ -25,7 +26,7 @@
         }
 
         const response = await got(`/user/update`, "PATCH", params)
-        alert(response.message)
+        popup(response.status, response.message)
         if (response.status == 1) {
             handleGetList();
             handleVisible();
@@ -51,28 +52,28 @@
         }
 
         const response = await got(`/user/password`, "PATCH", params)
-        alert(response.message)
+        popup(response.status, response.message)
         if (response.status == 1) {
             handleGetList()
             handleVisible()
         }
     }
+
     const deleteUser = async () => {
-        const confirmDialog = confirm("정말 삭제하시겠습니까?");
-        if(!confirmDialog) {
-            return;
-        }
+        popup(3, "정말 삭제하시겠습니까?", async (data: boolean) => {
+            if(data === false) return; 
 
-        let params = {
-            id: userInfo["id"]
-        }
+            let params = {
+                id: userInfo["id"]
+            }
 
-        const response = await got(`/user/delete`, "DELETE", params)
-        alert(response.message)
-        if (response.status == 1) {
-            handleGetList();
-            handleVisible();
-        }
+            const response = await got(`/user/delete`, "DELETE", params)
+            popup(response.status, response.message)
+            if (response.status == 1) {
+                handleGetList();
+                handleVisible();
+            }
+        });
     }
 </script>
 

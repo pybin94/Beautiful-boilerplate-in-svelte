@@ -1,6 +1,7 @@
 <script lang="ts">
     import { adminAuthLevel } from "constants/adminList";
     import { getCookie, got } from "utils/helpers";
+    import { popup } from "utils/popup";
     import { handleValidate } from "utils/validator";
 
     export let handleVisible: any;
@@ -26,7 +27,7 @@
             passwordConfirm: passwordConfirm.value,
         }
         const response = await got(`/admin/password`, "PATCH", params)
-        alert(response.message)
+        popup(response.status, response.message)
         if (response.status == 1) {
             handleVisible()
         }

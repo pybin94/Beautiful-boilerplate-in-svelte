@@ -1,4 +1,5 @@
 import { got, setCookie ,deleteCookie } from "utils/helpers"
+import { popup } from "utils/popup";
 
 export const signin = async (identity: string, password: string, rememberMe: boolean): Promise<void> => {
 
@@ -16,7 +17,7 @@ export const signin = async (identity: string, password: string, rememberMe: boo
         setCookie("user", JSON.stringify(response.data))
         location.reload();
     } else {
-        alert("회원 정보가 올바르지 않습니다")
+        popup(0, "회원 정보가 올바르지 않습니다")
     }
 }
 
