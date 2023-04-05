@@ -1,7 +1,7 @@
 <script lang="ts">
     import DropDown from "./Modal/DropDown.svelte";
-    import { nightMode } from "stores/store";
-    import { getCookie } from "utils/helpers";
+    import { lightMode } from "stores/store";
+    import { getCookie, setCookie } from "utils/helpers";
     import Modal from "utils/Modal.svelte";
     import Settings from "./Modal/Settings.svelte";
 
@@ -22,15 +22,15 @@
     }
 
     const handleNightMode = ():void => {
-        nightMode.update((value) => !value)
-        console.log($nightMode)
-        if($nightMode) {
-            document.body.classList.remove('night');
+        if (!getCookie("lightMode") || getCookie("lightMode") == "off") {
+            setCookie("lightMode", "on")
+            lightMode.update((value) => "on")
         } else {
-            document.body.classList.add('night');
+            setCookie("lightMode", "off")
+            lightMode.update((value) => "off")
         }
-
     }
+
 
     $: if(header){
         sidebarVisible == true
@@ -50,7 +50,7 @@
             on:keypress={toggleSidebarMobile} 
         ></i>
         <div 
-            class="night-mode {$nightMode == true ? "" : "active"}"
+            class="night-mode {$lightMode == "on" ? "active" : ""}"
             on:click={handleNightMode}
             on:keypress={handleNightMode} 
         >

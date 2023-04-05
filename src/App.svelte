@@ -10,11 +10,21 @@
   import Test from "pages/Test.svelte";
   import { getCookie } from "utils/helpers";
   import AdminCreate from "pages/AdminCreate/AdminCreate.svelte";
+  import { lightMode } from "stores/store";
   
   document.title = process.env.SITENAME
 
   let hasCookie: boolean;
   getCookie("user") ? hasCookie = true : hasCookie = false;
+
+
+  $: console.log($lightMode)
+  $: if($lightMode == "off") {
+      document.body.classList.remove('light');
+  } else {
+      document.body.classList.add('light');
+  }
+
 </script>
 
 {#if !hasCookie}

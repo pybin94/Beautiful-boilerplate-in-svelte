@@ -8,7 +8,7 @@
     height: 100vh;
     width: 235px;
     padding: 15px;
-    transition: all 0.3s;
+    transition: width 0.3s, left 0.3s;
 
     &__header {
         display: flex;

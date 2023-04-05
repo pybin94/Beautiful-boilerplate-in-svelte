@@ -23,7 +23,7 @@
   --green: #1ed624;
 }
 
-.night {
+.light {
   --url-sprite: '../img/';
   --font-size: 0.875rem;
   --card: #ffffff;
@@ -41,7 +41,7 @@
   --table-header: #bfe2ef;
   --table-color: #e3e5ea;
   --border-color: #c9c9c9;
-  --background: #e3e5ea;
+  --background: #eff0f2;
 }
 
 ::-webkit-scrollbar {
