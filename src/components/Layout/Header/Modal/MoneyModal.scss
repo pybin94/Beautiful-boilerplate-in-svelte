@@ -1,0 +1,12 @@
+.set-amount button {
+    width: 50px;
+}
+
+.form-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .line {
+        margin-right: 5px;
+    }
+}

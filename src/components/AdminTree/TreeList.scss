@@ -1,0 +1,47 @@
+.tree-list {
+    display: flex;
+    align-items: center;
+    padding: 0.4rem 0.25rem;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background 0.3s;
+
+    i {
+        transition: transform 0.3s;
+        width: 0.75rem;
+    }
+
+    &__level {
+        margin: 0 1rem 0 0.5rem;
+        transition: color 0.3s, background 0.3s;
+    }
+
+    &__identity {
+        font-size: 1rem;
+    }
+
+    &:hover {
+        background: var(--background);
+    }
+
+    &__children {
+        margin-left: 2rem;
+        display: none;
+    }
+}
+
+:global(.tree-list.show){
+
+    i {
+        transform: rotate(90deg);
+    }
+
+    button {
+        color: var(--green);
+        background: #00ff2230;
+    }
+}
+
+:global(.tree-list.show + .tree-list__children) {
+    display: block;
+}

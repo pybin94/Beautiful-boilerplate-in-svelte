@@ -1,0 +1,40 @@
+.create-admin__form {
+    width: 32%;
+    // &.dummy {
+    //     padding: 0;
+    // }
+
+    span {
+        color: var(--dark-color);
+    }
+
+    &:nth-child(3n+1){
+        padding-left: 0;
+        padding-right: 0;
+    }
+    &:nth-child(2n+1){
+        padding: 0.75rem;
+    }
+    &:nth-child(2n+2){
+        padding: 0.75rem;
+    }
+}
+
+.create-admin__form {
+
+    &.dubble {
+        width: 50%;
+        padding: 0.75rem;
+
+        &:nth-child(2n){
+            padding-right: 0;
+        }
+        &:nth-child(2n+1){
+            padding-left: 0;
+        }
+    }
+
+    span {
+        color: var(--dark-color);
+    }
+}

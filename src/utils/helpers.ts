@@ -18,12 +18,11 @@ export const got = async (urlParams: string = "", method: string = "GET", setPar
     try {
         const response = await fetch(api, options);
         const res = await response.json();
-        
-        if(res.status === -1) {
+        if(res.status == -1) {
             window.location.href = "/";
             return false;
-        } else if (res.status === -2) {
-            deleteCookie("auth")
+        } else if (res.status === -2, res.error == -2) {
+            deleteCookie("adminInfo")
             window.location.href = "/";
             return false;
         } else {
@@ -31,7 +30,7 @@ export const got = async (urlParams: string = "", method: string = "GET", setPar
         }
     } catch (error) {
         console.log(error);
-        return {status: 0, message: "오류가 발생했습니다. 관리자에게 문의주세요."};
+        return {status: 0, message: "오류가 발생했습니다."};
     };
 };
 
@@ -65,4 +64,48 @@ export const now = () => {
     const nowDate = new Date
     const setTimeZone = new Date(nowDate.getTime() - (nowDate.getTimezoneOffset() * 60000)) // Asia/Seoul
     return setTimeZone.toISOString().slice(0, 19).replace('T', ' ');
+}
+
+export const nowMin = () => {
+    let nowDate = new Date();
+    let weekAgo = new Date(nowDate.getTime() - 30 * 24 * 60 * 60 * 1000);
+    weekAgo.setHours(0, 0, 0, 0);
+    return weekAgo;
+}
+
+export const nowMax = () => {
+    let now = new Date();
+    now.setHours(23, 59, 59, 0);
+    return now;
+}
+
+export const moneyFormat = (money: number | string) => {
+    if(!money) return "0";
+    
+    let setMoney: number;
+    let removeDecimal: number;
+
+    if(typeof money === 'string'){
+        setMoney = parseInt(money)
+    } else if (typeof money === 'number'){
+        setMoney = money
+    }
+
+    removeDecimal = Math.floor(setMoney)
+    const format = removeDecimal.toLocaleString('ko-KR');
+    return format;
+}
+
+export const dateFormat = (dateString: string | Date) => {
+    const utcDate = new Date(dateString);
+
+    const year = utcDate.getUTCFullYear();
+    const month = utcDate.getUTCMonth() + 1;
+    const date = utcDate.getUTCDate();
+    const hours = utcDate.getUTCHours();
+    const minutes = utcDate.getUTCMinutes();
+    const seconds = utcDate.getUTCSeconds();
+
+    const localDateString = `${year}-${String(month).padStart(2, '0')}-${String(date).padStart(2, '0')} ${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+    return localDateString;
 }

@@ -3,10 +3,27 @@
         margin-bottom: 1rem;
     }
     
-    input {
+    label {
+        line-height: 16px;
+    }
+    
+    input, select {
+        width: 100%;
         margin-top: 0.3rem;
     }
+
+    .input-search {
+
+        button {
+            margin-top: 0.3rem;
+        }
+    }
+
+    &__text-center {
+        text-align: center;
+    }
 }
+
 :global(.form-group-half) {
     display: flex;
     justify-content: space-between;
@@ -37,7 +54,7 @@
     }
 }
 
-.form-footer {
+:global(.form-footer) {
     border-top: 1px dashed var(--border-color);
     width: 100%;
     display: flex;

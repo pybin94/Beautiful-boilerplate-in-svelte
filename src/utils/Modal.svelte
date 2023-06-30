@@ -5,14 +5,17 @@
 
     let animation: boolean;
     let showModal: boolean = false;
+    let blockModal: boolean = false;
 
     const handleIntro = (): void => {
-        animation = true
-        showModal = true
+        animation = true;
+        showModal = true;
+        blockModal = false;
     };
 
     const handleOutro = (): void => {
-        if(showModal == true) {
+        if(showModal == true && blockModal == false) {
+            blockModal = true
             animation = false
             setTimeout(()=>{
                 showModal = false
@@ -35,8 +38,6 @@
     } else if (visible === false) {
         handleShowModalOutro()
     }
-
-    
 </script>
 
 {#if showModal}

@@ -14,7 +14,7 @@
         }
 
         th{
-            padding: 0.72rem 2rem;
+            padding: 0.62rem 1.6rem;
             font-weight: 400;
         }
           
@@ -25,12 +25,11 @@
 }
 
 :global(.table table td) {
-    padding: 0.72rem 2rem;
+    padding: 0.62rem 1.6rem;
 }
 
 :global(.table table tr) {
     border-bottom: 1px solid var(--border-color);
-    cursor: pointer;
 }
   
 :global(.table table tr:hover) {

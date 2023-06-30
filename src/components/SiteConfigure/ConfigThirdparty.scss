@@ -1,0 +1,22 @@
+.card {
+    &__header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        &__title {
+            font-size: 1.25rem;
+        }
+
+        &__sub-title {
+            padding: 0.2rem 0;
+            font-size: 0.8rem;
+        }
+    }
+
+    &__wrap {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+}

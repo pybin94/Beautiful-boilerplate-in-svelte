@@ -3,6 +3,7 @@
     import { link } from "svelte-routing"
     import { menus } from "constants/layout";
     import { currentUrl } from "stores/store";
+    import { levelStore } from "stores/myInfo.store";
 
     export let toggleSidebar: any;
     export let toggleSidebarMobile: any;
@@ -54,6 +55,8 @@
 </script>
 <div 
     class="sidebar-wrap"
+    on:click={toggleSidebarMobile} 
+    on:keypress={toggleSidebarMobile}
     bind:this={sidebarWrap}
 ></div>
 <aside 
@@ -80,24 +83,32 @@
     <ul class="sidebar__menu">
         {#each menus as item}
             {#if item.class == "truncate"}
-                <li class="sidebar__menu__list {item.class}">
-                    <a href={item.url} use:link>
-                        <i class="{item.icon}"></i>
-                        <p>{item.title}</p>
-                    </a>
-                </li>
+                {#if item["level"] == undefined || $levelStore <= item["level"]}
+                    {#if item["levelLimit"] !== $levelStore}
+                        <li class="sidebar__menu__list {item.class}">
+                            <a href={item.url} use:link>
+                                <i class="{item.icon}"></i>
+                                <p>{item.title}</p>
+                            </a>
+                        </li>
+                    {/if}
+                {/if}
             {:else}
-                <li 
-                    class="sidebar__menu__list {item.class} 
-                    {$currentUrl == item.url 
-                    ? (sidebarVisible == true ? "active" : "active hide") 
-                    : (sidebarVisible == true ? "" : "hide")}"
-                >
-                    <a href={item.url} use:link on:click={handleUrlParams}>
-                        <i class="{item.icon}"></i>
-                        <p>{item.title}</p>
-                    </a>
-                </li>
+                {#if item["level"] == undefined || $levelStore <= item["level"]}
+                    {#if item["levelLimit"] !== $levelStore}
+                        <li 
+                            class="sidebar__menu__list {item.class} 
+                            {$currentUrl == item.url 
+                            ? (sidebarVisible == true ? "active" : "active hide") 
+                            : (sidebarVisible == true ? "" : "hide")}"
+                        >
+                            <a href={item.url} use:link on:click={handleUrlParams}>
+                                <i class="{item.icon}"></i>
+                                <p>{item.title}</p>
+                            </a>
+                        </li>
+                    {/if}
+                {/if}
             {/if}
         {/each}
     </ul>

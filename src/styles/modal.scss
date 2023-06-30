@@ -27,8 +27,9 @@
         animation: smoothAppear 0.3s;
         border-radius: 5px;
         background: var(--card);
-        box-shadow: -12px 12px 4px #090c14, 6px 23px 2px #576284;
-        min-width: 260px;
+        border: 1px solid var(--border-color);
+        // box-shadow: -12px 12px 4px #090c14, 6px 23px 2px #2d33447d;
+        min-width: 320px;
 
         &__header {
             position: relative;
@@ -71,7 +72,6 @@
 
         &__content {
             padding: 1.8rem 1.4rem 0.8rem;
-            border-bottom: 1px solid var(--border-color);
             max-height: 600px;
             overflow-y: auto;
         }
@@ -81,6 +81,7 @@
 :global(.modal__contents.inactive) {
     transform: translate(-50%, -80%) !important;
     opacity: 0;
+    width: auto;
 }
 :global(.modal__cover.inactive) {
     opacity: 0;

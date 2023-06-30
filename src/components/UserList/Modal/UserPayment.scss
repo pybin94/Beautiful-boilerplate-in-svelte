@@ -1,0 +1,27 @@
+// .admin-info-save {
+//     margin-left: auto;
+// }
+.admin-payment-confirm {
+    margin-left: auto;
+}
+
+.set-amount button {
+    min-width: 60px;
+}
+
+.payment-tab {
+    button {
+        border-radius: 4px ;
+    }
+}
+
+.pointDetail {
+    font-size: 0.81rem;
+    line-height: 1rem;
+}
+
+@media screen and (max-width: 768px) {
+    .set-amount button {
+        margin-bottom: 5px;
+    }
+}

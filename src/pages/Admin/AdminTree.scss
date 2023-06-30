@@ -1,0 +1,28 @@
+.admin-tree {
+    display: flex;
+    justify-content: space-between;
+
+    .tree-structure {
+        width: 100%;
+        margin-right: 0.85rem;
+    }
+
+    .admin-info {
+        width: 100%;
+        margin-left: 0.85rem;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .admin-tree {
+        flex-direction: column;
+    
+        .tree-structure {
+            margin-right: 0;
+        }
+
+        .admin-info {
+            margin-left: 0;
+        }
+    }
+}

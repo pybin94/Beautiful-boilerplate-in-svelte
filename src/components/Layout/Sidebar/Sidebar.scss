@@ -8,6 +8,7 @@
     height: 100vh;
     width: 235px;
     padding: 15px;
+    padding-bottom: 30px;
     transition: width 0.3s, left 0.3s;
 
     &__header {
@@ -87,6 +88,7 @@
 
             a {
                 display: flex;
+                align-items: center;
             }
         }
     }

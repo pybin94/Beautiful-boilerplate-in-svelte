@@ -11,7 +11,7 @@
     let sidebarVisible: boolean = true;
     let sidebarVisibleMobile: boolean = false;
     let container: HTMLElement;
-    
+
     export const handleUrlParams = () => {
         currentUrl.set(window.location.pathname)
         menus.forEach(item => {
@@ -22,6 +22,8 @@
         });
         sidebarVisibleMobile = false;
     };
+
+    $: $currentUrl, handleUrlParams();
 
     const toggleSidebar = () => {
         sidebarVisible = !sidebarVisible;
@@ -34,10 +36,10 @@
 
     const handleContainer = () => {
         if(!sidebarVisible) {
-            container.classList.add("wide")
+            container.classList.add("wide");
         } else {
-            container.classList.remove("wide")
-        }
+            container.classList.remove("wide");
+        };
     };
 
     window.onpopstate = () => {
@@ -46,18 +48,18 @@
 
     window.addEventListener("resize", () => {
         if(window.innerWidth > 1200) {
-            sidebarVisible = true
+            sidebarVisible = true;
             sidebarVisibleMobile = true;
             container.classList.remove("wide")
         } else {
-            sidebarVisible = true
+            sidebarVisible = true;
             sidebarVisibleMobile = false;
-        }
-    })
+        };
+    });
 
     onMount(()=>{
-        handleContainer()
-        handleUrlParams()
+        handleContainer();
+        handleUrlParams();
     });
 
 </script>

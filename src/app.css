@@ -1,3 +1,8 @@
+@font-face {
+  font-family: 'AppleSDGothicNeoM';
+  src: url('./assets/font/AppleSDGothicNeoM.ttf') format('truetype');
+}
+
 :root {
   --url-sprite: '../img/';
   --font-size: 0.875rem;
@@ -13,6 +18,7 @@
   --font-color: #d0d2d6;
   --font-color-down: #b4b7bd;
   --font-color-dark: #a2a5ab;
+  --font-color-fade: #8d8d8d;
   --table-header: #343d55;
   --table-color: #242b3d;
   --border-color: #404656;
@@ -38,12 +44,16 @@
   --font-color: #5e5873;
   --font-color-down: #6e6b7b;
   --font-color-dark: #7a6c6c;
+  --font-color-fade: #c9c9c9;
   --table-header: #bfe2ef;
   --table-color: #e3e5ea;
-  --border-color: #c9c9c9;
-  --background: #eff0f2;
+  --border-color: #d8d6de;
+  --background: #eee;
 }
 
+#app::-webkit-scrollbar {
+  display: none;
+}
 ::-webkit-scrollbar {
   width: 15px;
 }
@@ -85,6 +95,7 @@ body {
   letter-spacing: .01rem;
   font-size: var(--font-size);
   color: var(--font-color);
+  font-family: "AppleSDGothicNeoM";
 }
 
 h1, h2, h3, h4, h5, h6, p {
@@ -109,6 +120,10 @@ input[type="number"]::-webkit-inner-spin-button {
     margin: 0;
 }
 
+button:focus-visible {
+  outline: unset;
+}
+
 textarea {
   resize: none;
 }
@@ -124,4 +139,22 @@ textarea {
   to {
     opacity: 1;
   }
+}
+
+/* EDITER */
+
+.tox-notifications-container,
+.tox-statusbar__branding {
+  display: none;
+}
+
+.tox .tox-mbtn,
+.tox .tox-tbtn {
+  height: unset !important;
+  font-size: var(--font-size) !important;
+}
+
+.tox-icon {
+  width: 20px !important;
+  height: 20px !important;
 }

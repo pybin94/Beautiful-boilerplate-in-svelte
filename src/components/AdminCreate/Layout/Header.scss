@@ -1,0 +1,54 @@
+.create-user-header {
+    display: flex;
+    align-items: center;
+
+    &__level {
+        display: flex;
+        align-items: center;
+
+        &__box {
+            width: 2.5rem;
+            height: 2.5rem;
+            text-align: center;
+            line-height: 2.5rem;
+            font-size: 1.2rem;
+            background: var(--fade-color);
+            color: var(--font-color);
+            border-radius: 6px;
+        }
+
+        &__title {
+            margin: 0 1.3rem;
+        }
+
+        i {
+            margin-right: 1.3rem;
+        }
+    }
+}
+
+:global(.create-user-header__level__box.active) {
+    background: var(--dark-color) !important;
+    color:  var(--font-color-light) !important;
+}
+
+:global(.create-user-header__level__title.active) {
+    color:  var(--font-color-light);
+}
+
+@media screen and (max-width: 480px) {
+    .create-user-header {
+        &__level {
+    
+            &__title {
+                font-size: 0.75rem;
+                margin: 0 0.3rem;
+                display: none;
+            }
+    
+            i {
+                margin-left: 1.3rem;
+            } 
+        }
+    }
+}

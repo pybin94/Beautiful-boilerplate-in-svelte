@@ -63,7 +63,7 @@
     }
 
     :global(.shift a.active) {
-        color: #fff !important;
+        color: var(--font-color-light) !important;
         cursor: pointer !important;
     }
 }

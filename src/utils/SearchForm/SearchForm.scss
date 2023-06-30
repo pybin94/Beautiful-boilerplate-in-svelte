@@ -1,0 +1,33 @@
+.search-form {
+
+    .date-picker-wrap {
+        display: flex;
+    }
+}
+  
+@media screen and (max-width: 978px) {
+    select {
+        width: 100%;
+        margin: 0 0 1rem 0 !important;
+    }
+
+    .date-picker-wrap {
+        margin-bottom: 1rem;
+    }
+
+    .search-form__search {
+        display: block;
+        width: 100%;
+
+        &__wrap {
+            width: 100%;
+        }
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .date-picker-wrap {
+        margin-bottom: 1rem;
+    }
+
+}

@@ -4,10 +4,6 @@
     export let toggleSignModal: Function;
     export let handleSettingsVisible: Function;
 
-    const dorpDownMenus = [
-        {title: "설정 및 정보", link: "/user/list", icon: "fa-solid fa-screwdriver-wrench"},
-    ];
-
     const settings = () => {
         toggleSignModal();
         handleSettingsVisible();

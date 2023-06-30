@@ -1,8 +1,9 @@
 .sub-menu {
+    display: none;
     position: fixed;
     z-index: 100;
     right: 3%;
-    bottom: 4%;
+    bottom: 3%;
 
     &__button {
         width: 3rem;

@@ -1,0 +1,36 @@
+.admin-detail {
+    margin-bottom: 1rem;
+
+    label {
+        line-height: 1.2rem;
+    }
+
+    &.half {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        div {
+            width: 49%;
+            margin-right: 0.5rem;
+        }
+
+        div:last-child {
+            margin: 0;
+            margin-left: 0.5rem;
+        }
+    }
+
+    &.third {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        div {
+            width: 31.5%;
+        }
+        div:last-child {
+            margin: 0;
+        }
+    }
+}

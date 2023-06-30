@@ -1,0 +1,29 @@
+.search-form__search {
+    justify-content: space-between;
+    align-items: center;
+
+    &__wrap {
+        margin-left: auto;
+    }
+
+    select {
+        margin-right: 1rem;
+    }
+}
+
+.button-wrap {
+    display: flex;
+    justify-content: space-between;
+    margin: 0.5rem 0;
+}
+
+@media screen and (max-width: 480px) {
+    .button-wrap {
+        flex-direction: column;
+
+        &__send-message {
+            width: 100%;
+            margin-top: 0.5rem;
+        }
+    }
+}

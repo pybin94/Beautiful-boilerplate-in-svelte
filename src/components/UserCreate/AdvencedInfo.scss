@@ -1,0 +1,18 @@
+.create-user__form {
+    span {
+        color: var(--dark-color);
+    }
+
+    // &.dummy {
+    //     padding: 0;
+    // }
+
+    &__select {
+        width: 100%;
+        padding: 0.538rem 1rem;
+    }
+
+    .toggle {
+        padding: 4px 0;
+    }
+}

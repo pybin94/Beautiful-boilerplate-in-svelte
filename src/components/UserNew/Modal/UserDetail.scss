@@ -1,0 +1,27 @@
+
+
+.text-emphasis {
+    position: relative;
+
+    &::before {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        height: 2px;
+        width: 100%;
+        border-radius: 10px;
+    }
+}
+
+.text-emphasis.red::before {
+    background: #feaaaa;
+}
+
+.top-commission {
+    font-size: 0.75rem;
+    color: var(--dark-color);
+}
+
+.user-wait {
+    margin: 0 0.5rem 0 auto;
+}

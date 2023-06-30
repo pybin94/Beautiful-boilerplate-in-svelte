@@ -1,5 +1,5 @@
 <script lang="ts">
-    /**
+    /** Usage
      *  status = 0: unchecked, 1: checked 
      *  type = 0: text, 1: iconfinder 
      */

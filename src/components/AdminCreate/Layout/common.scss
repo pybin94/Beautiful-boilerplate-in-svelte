@@ -1,0 +1,30 @@
+.create-admin {
+    display: flex;
+    flex-wrap: wrap;
+
+    &__form {
+
+        width: 50%;
+        padding: 0.75rem;
+
+        &:nth-child(2n + 1) {
+            padding-left: 0;
+            padding-right: 0;
+        }
+
+        &:nth-child(2n + 2) {
+            padding-right: 0;
+        }
+
+        label {
+            line-height: 1.25rem;
+        }
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .create-admin__form {
+        width: 100% !important;
+        padding: 0.75rem 0 !important;
+    }
+}

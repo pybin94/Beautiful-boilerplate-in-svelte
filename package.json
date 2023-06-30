@@ -11,7 +11,9 @@
   },
   "devDependencies": {
     "@sveltejs/vite-plugin-svelte": "^2.0.0",
+    "@tinymce/tinymce-svelte": "^1.0.1",
     "@tsconfig/svelte": "^3.0.0",
+    "carbon-components-svelte": "^0.73.5",
     "sass": "^1.57.1",
     "svelte": "^3.54.0",
     "svelte-check": "^2.10.0",
@@ -21,6 +23,7 @@
     "vite": "^4.0.0"
   },
   "dependencies": {
+    "date-picker-svelte": "^2.3.0",
     "dotenv": "^16.0.3",
     "svelte-routing": "^1.6.0"
   }

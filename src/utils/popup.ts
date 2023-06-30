@@ -1,7 +1,23 @@
+/** Usage
+ * status 0: 실패
+ * status 1: 성공
+ * status 2: 경고
+ * status 3: 확인
+ * 
+ * status 0 or 1
+ * popup("description", status);
+ * 
+ * status 2 or 3
+ * popup("description", status, (data) => {
+ *    if (data == false) return;
+ *    ... callback 
+ * });
+ */
+
 interface PopupOptions {
     icon: string;
     title: string;
-    color: string
+    color: string;
 }
 
 const options: Array<PopupOptions> = [
@@ -11,7 +27,7 @@ const options: Array<PopupOptions> = [
     {icon: "exclamation", title: "경고", color: "danger"},
 ]
 
-export const popup = async (status?: number, description?: string, callback?: any)  => {
+export const popup = async ( description: string = "", status?: number, callback?: any)  => {
     let popupElement: HTMLElement = document.createElement('div');
     popupElement.setAttribute("class", "popup bounce");
     document.querySelector("#app").appendChild(popupElement)
@@ -22,19 +38,28 @@ export const popup = async (status?: number, description?: string, callback?: an
     
     let popup = document.querySelectorAll(".popup")
     let popupCover = document.querySelectorAll(".popup-cover")
-    popup[popup.length-1].innerHTML = popupContent(status, description);
+    popup[popup.length-1].innerHTML = popupContent(description, status);
     requestAnimationFrame(() => {
         popup[popup.length-1].classList.remove("bounce")
         popupCover[popupCover.length-1].classList.remove("fade")
     })
-    document.querySelectorAll("#popupClose")[document.querySelectorAll("#popupClose").length - 1].addEventListener("click", () => {
-        popupClose(false)
-        callback(false)
-    })
-    document.querySelectorAll("#popupConfirm")[document.querySelectorAll("#popupConfirm").length - 1]?.addEventListener("click", () => {
-        popupClose(true)
-        callback(true)
-    })
+
+    let focusButton: HTMLButtonElement;
+    status == 0 || status == 1
+    ? focusButton = document.querySelectorAll("#popupClose")[document.querySelectorAll("#popupClose").length - 1] as HTMLButtonElement
+    : focusButton = document.querySelectorAll("#popupConfirm")[document.querySelectorAll("#popupConfirm").length - 1] as HTMLButtonElement;
+    focusButton?.focus()
+
+    document.querySelectorAll("#popupClose")[document.querySelectorAll("#popupClose").length - 1]
+        .addEventListener("click", () => {
+            popupClose(false)
+            if(status == 2 || status == 3) callback(false);
+        })
+    document.querySelectorAll("#popupConfirm")[document.querySelectorAll("#popupConfirm").length - 1]
+        ?.addEventListener("click", () => {
+            popupClose(true)
+            callback(true)
+        })
 }
 
 export const popupClose = (isConfirm: boolean = false): string | void => {
@@ -51,11 +76,11 @@ export const popupClose = (isConfirm: boolean = false): string | void => {
         popupCover[popupCover.length-1].remove();
         popup[popup.length-1].remove();
     }
-
 }
 
-const popupContent = (status?: number, description?: string): string => {
-    if(!status) status = 1;
+const popupContent = (description: string, status?: number, ): string => {
+
+    status ??= 1
     if (!description) description = "";
     
     let contents: string = `
