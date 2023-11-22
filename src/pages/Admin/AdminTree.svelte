@@ -9,8 +9,8 @@
     let adminInfo: any;
     let detailVisible: boolean = false;
 
-    const init = () => {
-        handleGetTreeList()
+    const init = async () => {
+        await handleGetTreeList()
     }
 
     const handleDetailVisible = () => {
@@ -20,10 +20,25 @@
     const handleGetTreeList = async () => {
         const response = await got("/admin/tree");
         if(response.status == 1) {
-            
             treeStructure = [response.data];
+
+            adminInfo
+            ? updateAdminInfo(treeStructure)
+            : adminInfo = treeStructure[0];
         };
     };
+
+    const updateAdminInfo = (structure: Array<any>) => {
+        structure.map((item)=>{
+            if(item["id"] == adminInfo["id"]) {
+                adminInfo = item
+                return;
+            }
+            if (item["children"]) {
+                updateAdminInfo(item["children"])
+            }
+        })
+    }
 
     const handleSelectAdmin = (setAdminInfo: Array<any>) => {
         adminInfo = setAdminInfo;
@@ -42,7 +57,7 @@
 </div>
 
 <Modal visible={detailVisible} handleVisible={handleDetailVisible} title={"에이전트 상세정보"} >
-    <AdminDetail handleDetailVisible={handleDetailVisible} {adminInfo} handleGetList={null}/>
+    <AdminDetail handleVisible={handleDetailVisible} {adminInfo} handleGetList={handleGetTreeList}/>
 </Modal>
 
 <style lang="scss">

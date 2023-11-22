@@ -1,34 +1,23 @@
 <script lang="ts">
-    import Header from "components/UserCreate/Layout/Header.svelte";
-    import BasicInfo from "components/UserCreate/BasicInfo.svelte";
-    import AdvencedInfo from "components/UserCreate/AdvencedInfo.svelte";
-    import FullInfo from "components/UserCreate/FullInfo.svelte";
-    import Footer from "components/UserCreate/Layout/Footer.svelte";
-    import { createUserLevel, userFormBasic } from "constants/user";
+    import Header from "components/UserCreate/Header/Header.svelte";
+    import BasicInfo from "components/UserCreate/BasicInfo/BasicInfo.svelte";
+    import AdvencedInfo from "components/UserCreate/AdvencedInfo/AdvencedInfo.svelte";
+    import FullInfo from "components/UserCreate/FullInfo/FullInfo.svelte";
+    import Footer from "components/UserCreate/Footer/Footer.svelte";
+    import { createUserLevel, userFormBasic } from "constants/userCreate";
 
     let identity: HTMLInputElement;
-    let nickname: HTMLInputElement;
+    let username: HTMLInputElement;
     let password: HTMLInputElement;
     let passwordConfirm: HTMLInputElement;
-    let phoneNumber: HTMLInputElement;
-    let bank: HTMLInputElement;
-    let accountNumber: HTMLInputElement;
-    let accountHolder: HTMLInputElement;
-    
-    let casinoRollingRate: HTMLInputElement | number = 0;
-    let casinoLosingRate: HTMLInputElement | number = 0;
-    let slotRollingRate: HTMLInputElement | number = 0;
-    let slotLosingRate: HTMLInputElement | number = 0;
-    let minigameRollingRate: HTMLInputElement | number = 0;
-    let minigameLosingRate: any = 0;
-    let bonusLevel: HTMLInputElement | number = 1;
-    let bettingLimitLevel: HTMLInputElement | number = 1;
-    let isReferer: HTMLInputElement | number = 0;
-    let memo: HTMLInputElement;
+    let set1: HTMLInputElement;
+    let set2: HTMLInputElement;
+    let set3: HTMLInputElement;
+    let set4: HTMLInputElement;
 
-    const bindBasic = [identity, nickname, password, passwordConfirm, accountHolder, phoneNumber, bank, accountNumber];
-    const basicValidate = [identity, nickname, password, passwordConfirm, accountHolder, phoneNumber, bank, accountNumber];
-    const bindAdvenced = [casinoRollingRate, casinoLosingRate, slotRollingRate, slotLosingRate, minigameRollingRate, minigameLosingRate, bonusLevel, bettingLimitLevel, isReferer, memo];
+    const bindBasic = [identity, username, password, passwordConfirm];
+    const validateElements = [identity, username, password, passwordConfirm];
+    const bindAdvenced = [set1, set2, set3, set4];
     
     let page: number = 1;
 
@@ -38,13 +27,13 @@
             for(let i = 0; i < bindBasic.length; i++){
                 if (!bindBasic[i]) {
                     document.querySelector(`#${userFormBasic[i]["id"]}`).classList.add("invalid");
-                    return basicValidate[i].focus();
+                    return validateElements[i].focus();
                 }
             }
 
             if(bindBasic[2] !== bindBasic[3]) {
                 document.querySelector(`#${userFormBasic[3]["id"]}`).classList.add("invalid");
-                return basicValidate[3].focus();
+                return validateElements[3].focus();
             }
         }
 
@@ -58,15 +47,15 @@
         <div class="card__header">
             <Header {page} />
         </div>
-        <div class="create-user__title">
-            <p>{createUserLevel[page-1]["title"]}</p>
-            <p class="create-user__title__subtitle">
-                {createUserLevel[page-1]["subtitle"]}
-            </p>
-        </div>
         <div class="card__body">
+            <div class="create-user__title">
+                <p>{createUserLevel[page-1]["title"]}</p>
+                <p class="create-user__title__subtitle">
+                    {createUserLevel[page-1]["subtitle"]}
+                </p>
+            </div>
             {#if page == 1}
-                <BasicInfo {bindBasic} {basicValidate}/>
+                <BasicInfo {bindBasic} {validateElements}/>
             {:else if page == 2}
                 <AdvencedInfo {bindAdvenced}/>
             {:else}

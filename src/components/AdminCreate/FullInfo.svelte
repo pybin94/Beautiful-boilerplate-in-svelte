@@ -1,8 +1,10 @@
 <script lang="ts">
+    import { adminAuthLevel } from "constants/admin";
     import { adminFormAdvenced, adminFormBasic } from "constants/admin";
 
     export let bindBasic: object;
     export let bindAdvenced: object;
+    export let bindSelect: [number];
 
 </script>
 <form class="create-admin">

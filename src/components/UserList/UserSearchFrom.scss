@@ -4,11 +4,6 @@
     align-items: center;
     margin-bottom: 1rem;
 
-    select {
-        padding: 0.4rem 0.75rem;
-        margin-right: 4rem;
-    }
-
     label {
         margin-right: 0.76rem;
     }
@@ -26,40 +21,19 @@
         }
 
         &__wrap {
+            display: flex;
 
             input {
                 padding: 0.3rem 1rem;
+                border-radius: 4px 0 0 4px;
             }
             
             &__button {
+                background: var(--main-color);
+                border-radius: 0 4px 4px 0;
                 padding: 0.36rem 1rem;
                 font-size: 0.85rem;
             }
-        }
-    }
-
-    .date-picker-wrap {
-        display: flex;
-        align-items: center;
-    }
-}
-
-@media screen and (max-width: 978px) {
-    select {
-        width: 100%;
-        margin: 0 0 1rem 0 !important;
-    }
-
-    .date-picker-wrap {
-        margin-bottom: 1rem;
-    }
-
-    .search-form__search {
-        display: block;
-        width: 100%;
-
-        &__wrap {
-            width: 100%;
         }
     }
 }
@@ -67,9 +41,9 @@
 @media screen and (max-width: 480px) {
     select {
         width: 100%;
-        margin: 0 0 1rem 0 !important;
+        margin-bottom: 1rem;
     }
-
+    
     .search-form__search {
         display: block;
         width: 100%;
@@ -77,9 +51,5 @@
         &__wrap {
             width: 100%;
         }
-    }
-
-    .date-picker-wrap {
-        margin-bottom: 1rem;
     }
 }

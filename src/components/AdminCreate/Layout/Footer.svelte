@@ -5,7 +5,9 @@
     export let page: number;
     export let paging: Function;
     export let bindBasic: Array<HTMLInputElement>;
-    export let bindAdvenced: Array<HTMLInputElement | number>;
+    export let bindAdvenced: Array<HTMLInputElement>;
+    export let bindSelect: [number];
+
 </script>
 <div class="create-admin-footer">
     {#if page !== 1}
@@ -26,8 +28,10 @@
     {:else}
         <button 
             class="create-admin-footer__next"
-            on:click={()=>{createAdmin([...bindBasic, ...bindAdvenced])}}
-        >완료<i class="fa-solid fa-chevron-right"></i></button>
+            on:click={()=>{createAdmin([...bindBasic, ...bindSelect, ...bindAdvenced])}}
+        >
+            완료<i class="fa-solid fa-chevron-right"></i>
+        </button>
     {/if}
 </div>
 

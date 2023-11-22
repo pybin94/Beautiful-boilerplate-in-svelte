@@ -1,6 +1,4 @@
 <script lang="ts">
-    import { adminLevel } from "constants/admin";
-
     export let treeStructure: Array<any>;
     export let handleSelectAdmin: Function;
 
@@ -11,6 +9,7 @@
             e.target.classList.toggle("show");
         }
     };
+    
 </script>
 {#if treeStructure}
     {#each treeStructure as item}
@@ -32,11 +31,7 @@
             {/if}
             
             <button class="fade small tree-list__level">
-                {#each adminLevel as level}
-                    {#if item["level"] == level.level}
-                        {level.levelName}
-                    {/if}
-                {/each}
+                등급
             </button>
             <p class="tree-list__identity">{item["identity"]}</p>
         </ul>

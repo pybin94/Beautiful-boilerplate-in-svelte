@@ -36,6 +36,18 @@
     color:  var(--font-color-light);
 }
 
+@media screen and (max-width: 768px) {
+    .create-user-header {
+        &__level {
+    
+            &__title {
+                font-size: 0.875rem;
+                margin: 0 0.875rem;
+            }
+        }
+    }
+}
+
 @media screen and (max-width: 480px) {
     .create-user-header {
         &__level {

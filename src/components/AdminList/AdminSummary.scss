@@ -1,0 +1,17 @@
+.admin-summary {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    margin-bottom: 1rem;
+
+    p {
+        font-size: 1rem;
+        margin-left: 1rem;
+    }
+
+    &__coloring {
+        color: var(--main-color);
+        font-size: 1.2rem;
+        font-weight: 600;
+    }
+}
